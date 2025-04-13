@@ -219,23 +219,18 @@ export default {
     color: #ba0000;
     width: 100%;
 }
-
 .form {
     background-color: #d0d3d4;
 }
-
 .form-check-label {
     padding-right: 15px;
 }
-
 .form .col-lg-6 {
     padding-top: 16px;
 }
-
 .form .form-label {
     margin-bottom: 0px;
 }
-
 button.btn:hover {
     font-weight: bold;
 }
