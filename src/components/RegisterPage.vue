@@ -1,7 +1,14 @@
 <template>
-    <div class="container-fluid template"
+    <div class="container-fluid px-0 template"
         style="background-image: url('/images/abstract_01.webp');background-size: cover;">
-        <!-- style="background-image: url('/images/flats_with_garden.jpg'), url('/images/doted_bg11.png') ;  background-size: cover; background-blend-mode: overlay; " -->
+        <!-- style="background-image: url('/images/flats_with_garden.jpg'), url('/images/doted_bg11.png') ;
+           background-size: cover; background-blend-mode: overlay; " -->
+        <div class=" py-3 bg_purple">
+            <img src="images/rental_home_logo2.png" />
+            <h2 class="page_header">
+                <span class="text_orange">Rent</span><span class="text-light">Easy</span>
+            </h2>
+        </div>
         <h2> Create Account </h2>
         <div class="row px-lg-5">
             <div class="col-lg-4">
