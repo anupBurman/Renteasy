@@ -8,7 +8,7 @@
                 <span class="text_orange">Rent</span><span class="text-light">Easy</span>
             </h2>
         </div>
-        <div class="row p-4 " v-if="loginBlock">
+        <div class="row p-4" v-if="loginBlock">
             <h5> Enter Credentials to Login </h5>
 
             <div class="col-lg-4"></div>

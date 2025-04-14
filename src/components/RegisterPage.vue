@@ -10,7 +10,7 @@
             </h2>
         </div>
         <h2> Create Account </h2>
-        <div class="row px-lg-5">
+        <div class="row px-lg-5 p-3">
             <div class="col-lg-4">
             </div>
             <div class="col-lg-4 text-start">
@@ -24,7 +24,7 @@
 
 
 
-                <div class="form py-4 px-4">
+                <div class="form p-4">
                     <form @submit="postData($event)">
                         <div class="form-group">
 
