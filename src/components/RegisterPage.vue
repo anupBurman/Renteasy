@@ -113,7 +113,7 @@ export default {
             if (this.password === this.conformPass) {
                 const Axios = await axios({
                     method: 'post',
-                    url: 'http://localhost/rental_app/api/users.php',
+                    url: 'http://rentshent.xyz/api/users.php',
                     data: {
                         name: this.name,
                         email: this.email,
@@ -121,7 +121,7 @@ export default {
                         confirm: this.conformPass
                     }
                 })
-                console.log(Axios)
+                console.log(Axios.data.sql_massege)
                 if (Axios.data.sql_massege === 'Inserted') {
                     Swal.fire({
                         title: "Registration Done !!",

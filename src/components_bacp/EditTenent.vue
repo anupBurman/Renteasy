@@ -2,26 +2,23 @@
     <div class="container-fluid template">
         <h2> Edit Details In {{ response.prop_name }} / {{ rowId }} </h2>
         <!-- {{ response }} -->
-        <div class="row px-lg-5 px-2">
+        <div class="row px-lg-5 px-2 pb-5">
             <div class="form-group ">
-                            <span class="loader" v-if="loader"></span>
-                        </div>
-            <div v-if="successAlert" class="alert alert-success alert-dismissible ">
-                {{ successMessage }} 
+                <span class="loader" v-if="loader"></span>
+            </div>
+            <!-- <div v-if="successAlert" class="alert alert-success alert-dismissible ">
+                {{ successMessage }}
                 <button type="button" class="btn-close" @click="successAlert = false" aria-label="Close"></button>
-                <!-- <a href="#" class="close" aria-label="close" @click="successAlert = false">×</a> -->
             </div>
-            <div v-if="errorAlert" class="alert alert-danger alert-dismissible">
-                {{ errorMessage }} 
-                <button type="button" class="btn-close" @click="errorAlert = false" aria-label="Close"></button>
-                
-            </div>
+             -->
             <form id="form" @submit.prevent="fetchData($event)">
                 <div class="form-group ">
                     <input type="hidden" name="prop_name" class="form-control" placeholder="Enter Room/Flat Number">
                 </div>
             </form>
-            <div class="col-lg-4 text-start form p-4 pb-0">
+            <div class="col-lg-2">
+            </div>
+            <div class="col-lg-8 text-start form p-4 pb-0">
                 <div class="d_flex_between pb-2">
                     <h4 class="mb-0"> Edit Tenent Details </h4>
                     <button class="btn bg_purple btn-sm px-3 round" v-if="goback" @click="goBack()">
@@ -37,172 +34,192 @@
                             <input type="" name="prop_id" :value="rowId" class="form-control"
                                 placeholder="Enter Room/Flat Number">
                         </div> -->
-                        <div class="form-group ">
-                            <input type="text" v-model="tenent_id" name="tenent_id" class="form-control"
-                                placeholder="Enter Room/Flat Number">
-                        </div>
-
-                        <!-- 1 -->
-                        <div class="form-group ">
-                            <input type="text" v-model="roomNumber" name="room_id" class="form-control"
-                                placeholder="Enter Room/Flat Number">
-                        </div>
-
-                        <!-- 2 -->
-                        <div class="form-group ">
-                            <input type="text" v-model="TenentName" class="form-control" name="tenent_name"
-                                placeholder="Tenent Name*" required>
-                        </div>
-                        
-                        <!-- 3 -->
-                        <div class="form-group ">
-                            <input type="text" v-model="mobileNumber" class="form-control" maxlength="10" minlength="10"
-                                name="mob_number" placeholder="Tenent Mobile Number *" required>
-                        </div>
-
-                        <div class="d-flex">
-                            <!-- 4 -->
-                            <div class="form-group w-50 px-0 mx-0">
-                                <select class="form-select" name="gender" aria-label="Default select example">
-                                    <option selected> {{ response.gender }} </option>
-                                    <option value="male"> Male </option>
-                                    <option value="female"> Female </option>
-                                </select>
+                        <div class="row">
+                            <div class="col-lg-6 form-group ">
+                                <span> Tenent ID </span>
+                                <input type="text" v-model="tenent_id" name="tenent_id" class="form-control"
+                                    placeholder="Enter Room/Flat Number" disabled>
                             </div>
 
-                            <!-- 5 -->
-                            <div class="form-group w-50 px-0 mx-0">
-                                <input type="number" v-model="totalMemeber" class="form-control" maxlength="10"
-                                    name="total_members" placeholder="Total Members">
+                            <!-- 1 -->
+                            <div class="col-lg-6 form-group ">
+                                <span> Room/Flat Number  </span>
+                                <input type="text" v-model="roomNumber" name="room_id" class="form-control"
+                                    placeholder="Enter Room/Flat Number">
+                            </div>
+
+                            <!-- 2 -->
+                            <div class="col-lg-6 form-group ">
+                                <span> Tenent Name  </span>
+                                <input type="text" v-model="TenentName" class="form-control" name="tenent_name"
+                                    placeholder="Tenent Name*" required>
+                            </div>
+
+                            <!-- 3 -->
+                            <div class="col-lg-6 form-group ">
+                                <span> Mobile Number </span>
+                                <input type="text" v-model="mobileNumber" class="form-control" maxlength="10"
+                                    minlength="10" name="mob_number" placeholder="Tenent Mobile Number *" required>
+                            </div>
+
+                            <div class="col-lg-6 d-flex">
+                                <!-- 4 -->
+                                <div class="form-group w-50 px-0 mx-0">
+                                    <span> Gender </span>
+                                    <select class="form-select" name="gender" aria-label="Default select example">
+                                        <option selected> {{ response.gender }} </option>
+                                        <option value="male"> Male </option>
+                                        <option value="female"> Female </option>
+                                    </select>
+                                </div>
+
+                                <!-- 5 -->
+                                <div class="form-group w-50 px-0 mx-0">
+                                    <span> Total Members </span>
+                                    <input type="number" v-model="totalMemeber" class="form-control" maxlength="10"
+                                        name="total_members" placeholder="Total Members">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 d-flex">
+                                <!-- 6 -->
+                                <div class="form-group w-50 px-0 mx-0">
+                                    <span> Occupation </span>
+                                    <select class="form-select " name="occupation" aria-label="Default select example">
+                                        <option selected> {{ response.occupation }} </option>
+                                        <option value="Govt.Job"> Govt. Job </option>
+                                        <option value="Privet Job"> Privet Job </option>
+                                        <option value="Bussiness"> Bussiness </option>
+                                        <option value="Self Employed"> Self Employed </option>
+                                    </select>
+                                </div>
+                                <!-- 7 -->
+                                <div class=" form-group  w-50 px-0 mx-0">
+                                    <span> ID Proof Type </span>
+                                    <select class="form-select" name="idproof_type" aria-label="Default select example">
+                                        <option selected> {{ response.idproof_type }} </option>
+                                        <option value="Adhaar"> Adhaar </option>
+                                        <option value="Voter ID"> Voter ID </option>
+                                        <option value="Driving License"> Driving License </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- 8 -->
+                            <div class="form-group file_upload">
+                                <!-- <label for="exampleInputEmail1">Title</label> -->
+                                <input type="file" ref="file" accept="image/*" class="form-control w-75 ">
+                                <input type="text" :value="imagePath" name="tenentImg" class="form-control w-75 d-none">
+                                <div class="w-25 p-2 bg-light rounded">
+                                    <img :src="`http://localhost/rental_app/api/` + response.image_path"
+                                        class="preview_img" />
+                                </div>
+                            </div>
+
+
+                            <div class="form-group ">
+                                <button type="button" class="btn bg_purple text-light round "
+                                    @click="nextShow()">
+                                   Next <i class="ps-2 fa fa-arrow-right text-light"> </i>
+                                </button>
                             </div>
                         </div>
 
-                        <div class="d-flex">
-                            <!-- 6 -->
-                            <div class="form-group w-50 px-0 mx-0">
-                                <select class="form-select " name="occupation" aria-label="Default select example">
-                                    <option selected> {{ response.occupation }} </option>
-                                    <option value="Govt.Job"> Govt. Job </option>
-                                    <option value="Privet Job"> Privet Job </option>
-                                    <option value="Bussiness"> Bussiness </option>
-                                    <option value="Self Employed"> Self Employed </option>
-                                </select>
-                            </div>
-                            <!-- 7 -->
-                            <div class="form-group w-50 px-0 mx-0">
-                                <select class="form-select" name="idproof_type" aria-label="Default select example">
-                                    <option selected> {{ response.idproof_type }} </option>
-                                    <option value="Adhaar"> Adhaar </option>
-                                    <option value="Voter ID"> Voter ID </option>
-                                    <option value="Driving License"> Driving License </option>
-                                </select>
-                            </div>
-                        </div>
-                        <!-- 4 -->
-                        <div class="form-group file_upload">
-                            <!-- <label for="exampleInputEmail1">Title</label> -->
-                            <input type="file" ref="file" accept="image/*" class="form-control w-75">
-                            <input type="text" :value="imagePath" name="tenentImg" class="form-control w-75 d-none"  >
-                            <div class="w-25 p-2 bg-light rounded">
-                                <img :src="`http://localhost/rental_app/api/` + response.image_path"
-                                    class="preview_img" />
-                            </div>
-                        </div>
-                        <div class="form-group w-25 py-3">
-                            <button type="button" class="btn bg_purple text-light  form-control" @click="nextShow()">
-                                Next
-                            </button>
-                        </div>
                     </div>
 
                     <!-- =========== SECOND PART OF FORM ======== -->
 
                     <div class="form_2 " id="form_2">
-                        <!-- <h4> Rental Deatals </h4> -->
-                        <div class="form-group ">
-                            <input type="text" name="rent_amount" class="form-control" v-model="rentAmount"
-                                placeholder="Enter Montly Rent Amount">
-                        </div>
-                        <div class="form-group  px-0 mx-0">
-                            <select class="form-select" name="rent_mode" aria-label="Default select example">
-                                <option selected> {{ response.rent_mode }} </option>
-                                <option value="fixed date"> 5th day of the Month </option>
-                                <option value="date to date"> Date to Date </option>
-                            </select>
-                        </div>
+                        <div class="row">
+                            <!-- <h4> Rental Deatals </h4> -->
+                            <div class="col-lg-6 form-group ">
+                                <span> Monthly Rent Amount </span>
+                                <input type="text" name="rent_amount" class="form-control" v-model="rentAmount"
+                                    placeholder="Enter Montly Rent Amount">
+                            </div>
+                            <div class="col-lg-6 form-group ">
+                                <span> Rent Mode  </span>
+                                <select class="form-select" name="rent_mode" aria-label="Default select example">
+                                    <option selected> {{ response.rent_mode }} </option>
+                                    <option value="fixed date"> 5th day of the Month </option>
+                                    <option value="date to date"> Date to Date </option>
+                                </select>
+                            </div>
 
-                        <!-- <div class="form-group ">
+                            <!-- <div class="form-group ">
                             <input type="text" :value="response.rent_start_date"  name="rent_start_date" class="form-control"
                                 placeholder="Start Date Of Rent" required >
                         </div> -->
-                        <div class="form-group ">
-                            <input type="date" v-model="response.rent_start_date" name="rent_start_date"
-                                class="form-control" placeholder="Start Date Of Rent">
-                        </div>
-                        <!-- <div class="form-group ">
+                            <div class="col-lg-6 form-group ">
+                                <span> Rent Start Date </span>
+                                <input type="date" v-model="response.rent_start_date" name="rent_start_date"
+                                    class="form-control" placeholder="Start Date Of Rent">
+                            </div>
+                            <!-- <div class="form-group ">
                             <button type="button" class="btn btn-sm bg_purple text-white  round">Advance Rent</button>
                             <button type="button" class="btn btn-sm bg_purple text-white mx-2 round">None</button>
                         </div> -->
 
-                        <div class="form-group ">
-                            <span> Enter if Any Due/Advance Payment </span>
-                            <input type="text" name="strt_due_amount" class="form-control"
-                                placeholder="Enter Due Amount">
-                        </div>
-                        <p class="mb-0"> Do You Take Any Security Deposit ? </p>
-                        <div class="form-group d-flex align-items-end">
-                            <button type="button" class="btn btn-sm bg_purple text-white  round"
-                                @click="securityAmt = false">No</button>
-                            <button type="button" class="btn btn-sm bg_purple text-white mx-2 round"
-                                @click="securityAmt = !false">Yes</button>
-
-                            <input type="number" v-model="securityAmt" name="security_amount" class="form-control "
-                                placeholder="Enter Sucurity Amount" v-if="securityAmt">
-                        </div>
-                        <p class="mb-0"> Do You Take Montly maintenence Charges? </p>
-                        <div class="form-group d-flex align-items-end">
-                            <button type="button" class="btn btn-sm bg_purple text-white  round"
-                                @click="mentainChrg = ''">No</button>
-                            <button type="button" class="btn btn-sm bg_purple text-white mx-2 round"
-                                @click="mentainChrg = !''">Yes</button>
-                            <input type="number" v-model="mentainChrg" name="mantenece_charge" class="form-control"
-                                placeholder="Enter Monthly mantenece Charge" v-if="mentainChrg">
-                        </div>
-
-                        <hr>
-                        <h4> Electricity </h4>
-                        <div class="form-group  px-0 mx-0">
-                            <select class="form-select" @change="billMode($event)" name="bijli_bill"
-                                aria-label="Default select example">
-                                <option selected class="d-none"> {{ response.bijli_bill }} </option>
-                                <option value="charge per unit"> Charges per Unit </option>
-                                <option value="govt billing"> Govt. Meter Billing </option>
-                                <option value="fixed monthly"> Fixed Monthly </option>
-                                <option value="none"> None (Included in Rent) </option>
-                            </select>
-                        </div>
-
-                        <!-- electricity -->
-                        <div v-if="perUnitBox">
-                            <div class="d_flex_between">
-                                <div class="form-group w-50 ">
-                                    <input type="text" v-model="perUnit" name="e_per_unit" class="form-control"
-                                        placeholder="Per Unit Price">
-                                </div>
-                                <div class="form-group w-50">
-                                    <input type="date" v-model="response.e_redaing_date" name="e_redaing_date"
-                                        class="form-control" placeholder="Enter Reading Date">
-                                </div>
+                            <div class="col-lg-6 form-group ">
+                                <span> Enter if Any Due/Advance Payment </span>
+                                <input type="text" name="strt_due_amount" class="form-control"
+                                    placeholder="Enter Due Amount">
                             </div>
-                            <div class="form-group">
-                                <input type="number" name="bijli_reading" v-model="response.bijli_reading" class="form-control"
-                                    placeholder="Enter Reading in Units">
+                            <p class="mb-0"> Do You Take Any Security Deposit ? </p>
+                            <div class=" form-group d-flex align-items-end">
+                                <button type="button" class="btn btn-sm bg_purple text-white  round"
+                                    @click="securityAmt = false">No</button>
+                                <button type="button" class="btn btn-sm bg_purple text-white mx-2 round"
+                                    @click="securityAmt = !false">Yes</button>
+
+                                <input type="number" v-model="securityAmt" name="security_amount" class="form-control "
+                                    placeholder="Enter Sucurity Amount" v-if="securityAmt">
                             </div>
-                        </div>
+                            <p class="mb-0"> Do You Take Montly maintenence Charges? </p>
+                            <div class="form-group d-flex align-items-end">
+                                <button type="button" class="btn btn-sm bg_purple text-white  round"
+                                    @click="mentainChrg = ''">No</button>
+                                <button type="button" class="btn btn-sm bg_purple text-white mx-2 round"
+                                    @click="mentainChrg = !''">Yes</button>
+                                <input type="number" v-model="mentainChrg" name="mantenece_charge" class="form-control"
+                                    placeholder="Enter Monthly mantenece Charge" v-if="mentainChrg">
+                            </div>
+
+                            <hr>
+
+                            <div class="col-lg-6">
+                                <h4> Electricity </h4>
+                                <div class=" form-group  px-0 mx-0">
+                                    <select class="form-select" @change="billMode($event)" name="bijli_bill"
+                                        aria-label="Default select example">
+                                        <option selected class="d-none"> {{ response.bijli_bill }} </option>
+                                        <option value="charge per unit"> Charges per Unit </option>
+                                        <option value="govt billing"> Govt. Meter Billing </option>
+                                        <option value="fixed monthly"> Fixed Monthly </option>
+                                        <option value="none"> None (Included in Rent) </option>
+                                    </select>
+                                </div>
+
+                                <!-- electricity -->
+                                <div v-if="perUnitBox">
+                                    <div class="d_flex_between">
+                                        <div class="form-group w-50 ">
+                                            <input type="text" v-model="perUnit" name="e_per_unit" class="form-control"
+                                                placeholder="Per Unit Price">
+                                        </div>
+                                        <div class="form-group w-50">
+                                            <input type="date" v-model="response.e_redaing_date" name="e_redaing_date"
+                                                class="form-control" placeholder="Enter Reading Date">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number" name="bijli_reading" v-model="response.bijli_reading"
+                                            class="form-control" placeholder="Enter Reading in Units">
+                                    </div>
+                                </div>
 
 
-                        <div class="d-flex" v-if="govBill">
-                            <!-- <div class="form-group">
+                                <div class="d-flex" v-if="govBill">
+                                    <!-- <div class="form-group">
                                 <input type="text" name="security_amount" class="form-control"
                                     placeholder="Enter Sucurity Amount">
                             </div>
@@ -210,66 +227,75 @@
                                 <input type="date" name="Redaing_date" class="form-control"
                                     placeholder="Enter Sucurity Amount">
                             </div> -->
-                        </div>
-
-                        <div v-if="fixedMonthly">
-                            <div class="form-group">
-                                <input type="number" v-model="eFixedMonthlyAmount" name="e_fixed_monthly"
-                                    class="form-control" placeholder="Enter Amount">
-                            </div>
-                        </div>
-                        <hr>
-                        <h4> Water Bill</h4>
-                        <div class="form-group  px-0 mx-0">
-                            <select class="form-select" @change="waterBill($event)" name="water_bill"
-                                aria-label="Default select example">
-                                <!-- <option selected class="d-none" >Select Rent Mode </option> -->
-                                <option value="charge per unit"> Charges per Unit </option>
-                                <option value="govt billing"> Govt. Meter Billing </option>
-                                <option value="fixed monthly"> Fixed Monthly </option>
-                                <option value="none" selected > None (Included in Rent) </option>
-                            </select>
-                        </div>
-
-                        <!-- water  -->
-                        <div v-if="perUnitBox2">
-                            <div class="d_flex_between ">
-                                <div class="form-group w-50">
-                                    <input type="number" v-model="perUnit2" name="w_per_unit" class="form-control"
-                                        placeholder="Per Unit Price">
                                 </div>
-                                <div class="form-group w-50">
-                                    <input type="date" name="w_redaing_date" class="form-control"
-                                        placeholder="Enter Date ">
+
+                                <div  v-if="fixedMonthly">
+                                    <div class="form-group">
+                                        <input type="number" v-model="eFixedMonthlyAmount" name="e_fixed_monthly"
+                                            class="form-control" placeholder="Enter Amount">
+                                    </div>
+                                </div>
+                                <hr>
+                                
+                            </div>
+
+
+                            <!-- water  -->
+                            <div class="col-lg-6">
+                                <h4> Water Bill</h4>
+                                <div class="form-group  px-0 mx-0">
+                                    <select class="form-select" @change="waterBill($event)" name="water_bill"
+                                        aria-label="Default select example">
+                                        <!-- <option selected class="d-none" >Select Rent Mode </option> -->
+                                        <option value="charge per unit"> Charges per Unit </option>
+                                        <option value="govt billing"> Govt. Meter Billing </option>
+                                        <option value="fixed monthly"> Fixed Monthly </option>
+                                        <option value="none" selected> None (Included in Rent) </option>
+                                    </select>
+                                </div>
+                                <div v-if="perUnitBox2">
+                                    <div class="d_flex_between ">
+                                        <div class="form-group w-50">
+                                            <input type="number" v-model="perUnit2" name="w_per_unit"
+                                                class="form-control" placeholder="Per Unit Price">
+                                        </div>
+                                        <div class="form-group w-50">
+                                            <input type="date" name="w_redaing_date" class="form-control"
+                                                placeholder="Enter Date ">
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <input type="number" name="water_reading" class="form-control"
+                                            placeholder="Enter Water Reading">
+                                    </div>
+                                </div>
+                                <div class="d-flex" v-if="govBill2">
+                                </div>
+                                <div v-if="fixedMonthly2">
+                                    <div class="form-group">
+                                        <input type="number" v-model="eFixedMonthlyAmount" name="w_fixed_monthly"
+                                            class="form-control" placeholder="Enter Amount">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group ">
-                                <input type="number" name="water_reading" class="form-control"
-                                    placeholder="Enter Water Reading">
-                            </div>
-                        </div>
-                        <div class="d-flex" v-if="govBill2">
-                        </div>
-                        <div v-if="fixedMonthly2">
-                            <div class="form-group">
-                                <input type="number" v-model="eFixedMonthlyAmount" name="w_fixed_monthly"
-                                    class="form-control" placeholder="Enter Amount">
-                            </div>
-                        </div>
-                        <div class="form-group py-3">
-                            <button type="submit"  name="submit" class="btn bg_purple text-light  form-control"> Submit
-                            </button>
-                        </div>
 
-                        <!-- <div class="form-group py-3">
+                            <div class="form-group py-3">
+                                <button type="submit" name="submit" class="btn bg_purple text-light  form-control">
+                                    Submit
+                                </button>
+                            </div>
+
+                            <!-- <div class="form-group py-3">
                             <span class="loader" v-if="loader"></span>
                         </div> -->
 
+                        </div>
                     </div>
+
 
                 </form>
             </div>
-            <div class="col-lg-9">
+            <div class="col-lg-2">
                 <!-- <h6 class="alert alert-success" v-if="successMsg"> Updated Successfully !! </h6>
                 <span class="loader" v-if="loader"></span> -->
             </div>
@@ -280,16 +306,14 @@
 
 <script>
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default {
     name: 'EditTenent',
     data() {
         return {
             response: [],
-            successAlert: false,
-            errorAlert: false,
             loader: true,
-            // successMsg: '
 
             tenent_id: '',
             imagePath: '',
@@ -304,6 +328,7 @@ export default {
             rentAmount: '',
             rentStartDate: '',
             bijliReading: '',
+            
 
             rowId: '',
             securityAmt: true,
@@ -312,7 +337,8 @@ export default {
             govBill: '',
             eFixedMonthlyAmount: '',
             fixedMonthly: '',
-
+            perUnitBox: '',
+            perUnitBox2: '',
             perUnit2: '',
             govBill2: '',
             wFixedMonthlyAmount: '',
@@ -432,15 +458,18 @@ export default {
                 }
             }).then(response => {
                 if (response.data.image == '') {
-                    this.errorAlert = true;
-                    this.successAlert = false;
+                    Swal.fire({
+                        text: response.data.message,
+                        color: "#ba0000"
+                    });
                     this.errorMessage = response.data.message;
-                    this.successMessage = '';
                     this.uploadedImage = '';
                 } else {
-                    this.errorAlert = false;
-                    this.successAlert = true;
-                    this.errorMessage = '';
+                    Swal.fire({
+                        icon: "success",
+                        text: response.data.message,
+                        timer: 1500
+                    });
                     this.successMessage = response.data.message;
                     this.$refs.file.value = '';
                 }

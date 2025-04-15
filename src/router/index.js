@@ -24,6 +24,7 @@ import VerifyOtp from "@/components/VerifyOtp.vue";
 import EditProperty from "@/components/edit/EditProperty.vue";
 import TermsConditions from "@/components/TermsConditions.vue";
 import ErrorPage from "@/components/ErrorPage.vue";
+import AddShop from "@/components/AddShop.vue";
 
 
 
@@ -147,6 +148,11 @@ const routes = [
     path: '/terms_conditions',
     name: 'TermsConditions',
     component: TermsConditions
+   },
+   {
+    path: '/add_shop/:id',
+    name: 'AddShop',
+    component: AddShop
    },
    {
     path: '/error_page',

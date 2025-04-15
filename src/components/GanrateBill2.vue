@@ -157,7 +157,7 @@ export default {
             // e.preventDefault();
             const Output = await axios({
                 method: 'post',
-                url: 'http://localhost/rental_app/api/tenent_all_details.php',
+                url: 'http://rentshent.xyz/api/tenent_all_details.php',
                 data: {
                     tenentId: this.tenentId,
                 }
@@ -182,7 +182,7 @@ export default {
             e.preventDefault();
             const billData = await axios({
                 method: 'post',
-                url: 'http://localhost/rental_app/api/post_electric_water_bill.php',
+                url: 'http://rentshent.xyz/api/post_electric_water_bill.php',
                 data: {
                     property: this.rowId,
                     room_num: this.output.room_id,
@@ -214,7 +214,7 @@ export default {
             console.log(tenentId)
             const Response2 = await axios({
                 method: 'post',
-                url: 'http://localhost/rental_app/api/tenent_bill_detail.php',
+                url: 'http://rentshent.xyz/api/tenent_bill_detail.php',
                 data: {
                     id: this.tenentId,
                 }

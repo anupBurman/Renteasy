@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-dark bg_purple ">
+    <nav class="navbar navbar-expand-lg navbar-dark bg_purple " v-if="navLinks">
         <div class="container-fluid ">
             <a class="navbar-brand " href="#">
                 <img src="images/rental_home_logo2.png" />
@@ -10,36 +10,35 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ">
+            <div class="collapse navbar-collapse" id="navbarNav" >
+                <ul class="navbar-nav" >
                     <li class="nav-item">
                         <a class="nav-link"> <router-link to="/" @click="refresh()">Home</router-link> </a>
                     </li>
                     <!-- <li class="nav-item" @click="hideMenu($event)">
                         <a class="nav-link"> <router-link to="/ContactUs"> Contact Us </router-link> </a>
                     </li> -->
-                    <li class="nav-item" @click="hideMenu($event)">
+                    <!-- <li class="nav-item" @click="hideMenu()">
                         <a class="nav-link"> <router-link to="/Tab-View"> Tab View </router-link> </a>
-                    </li>
-                    <li class="nav-item" @click="hideMenu($event)">
+                    </li> -->
+                    <li class="nav-item" @click="hideMenu()">
                         <a class="nav-link"> <router-link to="/add_property"> Post </router-link> </a>
                     </li>
                     <!-- <li class="nav-item" @click="hideMenu($event)">
                         <a class="nav-link"> <router-link to="/ref"> Ref </router-link> </a>
                     </li> -->
-
-                    <li class="nav-item" @click="hideMenu($event)">
+                    <!-- <li class="nav-item" @click="hideMenu()">
                         <a class="nav-link"> <router-link to="/samples"> Samples </router-link> </a>
-                    </li> 
-                    <li class="nav-item" @click="hideMenu($event)">
-                        <a class="nav-link"> <router-link to="/AddProperty"> Add Property </router-link> </a>
+                    </li> -->
+                    <li class="nav-item" @click="hideMenu()">
+                        <a class="nav-link"> <router-link to="/add_property"> Add Property </router-link> </a>
                     </li>
 
                     <!-- <li class="nav-item" @click="hideMenu($event)">
                         <a class="nav-link"> <router-link to="/imagepost"> test </router-link> </a>
                     </li> -->
 
-                    <li class="nav-item" @click="hideMenu($event)">
+                    <li class="nav-item" @click="hideMenu()">
                         <a class="nav-link"> <router-link to="/myProperty">My Properties </router-link> </a>
                     </li>
 
@@ -60,18 +59,18 @@
                     </div> -->
 
                 </ul>
-                <ul class="navbar-nav ps-lg-5 ms-lg-5">
-                    <li class="nav-item px-2" v-if="loginLink" @click="hideMenu($event)">
-                        <a class="dropdown-item"> <router-link to="/login">   login</router-link> </a>
+                <ul class="navbar-nav ps-lg-5 ms-lg-5 pb-3">
+                    <li class="nav-item px-2" v-if="loginLink" @click="hideMenu()">
+                        <a class="dropdown-item"> <router-link to="/login"> login</router-link> </a>
                     </li>
-                    <li class="nav-item px-2" v-if="register" @click="hideMenu($event)">
+                    <li class="nav-item px-2" v-if="register" @click="hideMenu()">
                         <a class="dropdown-item"> <router-link to="/register"> Register</router-link> </a>
                     </li>
                     <li class="nav-item px-2">
                         <a class="dropdown-item log_out" v-if="username"> Welcome {{ username }} ! </a>
                     </li>
                     <li class="nav-item px-2">
-                        <a class="dropdown-item log_out" @click="logOut(), refresh()" v-if="logout">   Logout </a>
+                        <a class="dropdown-item log_out" @click="logOut(), refresh()" v-if="logout"> Logout </a>
                     </li>
                 </ul>
 
@@ -92,24 +91,25 @@ export default {
             logout: true,
             register: true,
             username: '',
+            navLinks: true,
         }
     },
     methods: {
-        hideMenu(e) {
-            let smallNav = e.target.parentNode.parentNode.parentNode.parentNode;
+        hideMenu() {
+            let smallNav = document.getElementById('navbarNav')
+            // let smallNav = e.target.parentNode.parentNode.parentNode.parentNode;
             let statusHide = smallNav.classList.remove('show')
             if (!statusHide) {
                 statusHide
             }
         },
-        hideMenu2(e) {
-            let smallNav2 = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
+        hideMenu2() {
+            let smallNav2 = document.getElementById('navbarNav')
             let statusHide2 = smallNav2.classList.remove('show')
             if (!statusHide2) {
                 statusHide2
             }
         },
-
 
         refresh() {
             window.location.reload();
@@ -133,13 +133,15 @@ export default {
         let localUserParse = JSON.parse(localUser);
         if (!localUser) {
             this.logout = false;
+            this.navLinks = '';
+            this.$router.push({ name: 'logIn' }) 
         } else {
             this.$router.push({ name: 'HomePage' })
             this.loginLink = false;
             this.logout = true;
             this.register = false;
             this.username = localUserParse // for print user name
-           
+
         }
     }
 }
@@ -176,6 +178,7 @@ a.navbar-brand {
 @media (max-width:567px) {
     #navbarNav.navbar-collapse {
         position: absolute;
+        border-radius: 0px 9px 9px 9px;
         background: rgb(96, 67, 157);
         background: linear-gradient(97deg, rgba(96, 67, 157, 1) 50%, rgba(126, 89, 203, 1) 100%);
         top: 55px;
@@ -189,6 +192,7 @@ a.navbar-brand {
 
     .nav-item .nav-link {
         padding: 16px 0px;
+        border-bottom: 1px solid #e7e7e715;
     }
 
     .show {

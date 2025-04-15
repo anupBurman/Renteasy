@@ -75,7 +75,7 @@ export default {
             e.preventDefault();
             const Output = await axios({
                 method: 'post',
-                url: 'http://localhost/rental_app/api/recieve_payment.php',
+                url: 'http://rentshent.xyz/api/recieve_payment.php',
                 data: {
                     property: this.rowId,
                     tenentId: this.tenentId,

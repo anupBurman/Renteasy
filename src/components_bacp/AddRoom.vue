@@ -10,15 +10,11 @@
             </form>
             <div class="col-lg-3 col-md-3"></div>
             <div class="col-lg-6 col-md-6 text-start ">
-                <div v-if="successAlert" class="alert alert-success alert-dismissible">
-                    <!-- <a href="#" class="close" aria-label="close" @click="successAlert = false">×</a> -->
+                <!-- <div v-if="successAlert" class="alert alert-success alert-dismissible">
                     {{ successMessage }}
                     <button type="button" class="btn-close" @click="successAlert = false" aria-label="Close"></button>
                 </div>
-                <div v-if="errorAlert" class="alert alert-danger alert-dismissible">
-                    {{ errorMessage }}
-                    <button type="button" class="btn-close" @click="errorAlert = false" aria-label="Close"></button>
-                </div>
+                 -->
                 <div class="form p-4">
                     <div class="d_flex_between pb-2">
                         <h4 class="mb-0"> Add Tenent Details </h4>
@@ -108,15 +104,13 @@
 
                                 <div class="form-group file_upload">
                                     <!-- <label for="exampleInputEmail1">Title</label> -->
-                                    <input type="file" ref="file" accept="image/*" class="form-control w-75">
+                                    <input type="file" ref="file" accept="image/*" class="form-control w-75"
+                                        @change="previewImg($event)">
                                     <div class="w-25 p-2 bg-light rounded">
-                                        <img src="xyz.jpg" class="preview_img" />
+                                        <img :src="img_url" class="preview_img" />
                                     </div>
                                 </div>
-                                <!-- <div class="form-group text-danger" >
-                                 Input field with <span class="text-dark"> * </span> sign Can't be empty <br>
-                                 File Uplod field can not be empty
-                                </div> -->
+
                                 <div v-if="requireMsg" class="alert py-1 alert-light text-danger  alert-dismissible">
                                     Input field with <span class="text-dark "> * </span> sign can't be empty. <br>
                                     File Uplod field can't be empty.
@@ -124,7 +118,7 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="form-group  ">
-                                    <button type="button" class="btn bg_purple text-light  round  " @click="nextShow()">
+                                    <button type="button" class="btn bg_purple text-light  round " @click="nextShow()">
                                         Next &nbsp; <i class="fa fa-arrow-right text-light " aria-hidden="true"></i>
                                     </button>
                                 </div>
@@ -138,13 +132,15 @@
                             <!-- <h4> Rental Deatals </h4> -->
                             <div class="d_flex">
                                 <div class="form-group w-50 pe-lg-2">
+                                    <span>Enter Montly Rent Amount* </span>
                                     <input type="text" name="rent_amount" class="form-control"
-                                        placeholder="Enter Montly Rent Amount *" required>
+                                        placeholder="Montly Rent Amount *" required>
                                 </div>
                                 <div class="form-group w-50 ">
+                                    <span> Select Rent Mode </span>
                                     <select class="form-select" name="rent_mode" aria-label="Default select example"
-                                        required>
-                                        <option selected>Select Rent Mode *</option>
+                                        v-model="rentMode" required>
+                                        <!-- <option selected>Select Rent Mode *</option> -->
                                         <option value="fixed date"> 5th day of the Month </option>
                                         <option value="date to date"> Date to Date </option>
                                     </select>
@@ -154,8 +150,8 @@
                             <div class="d_flex">
                                 <div class="w-50 pe-lg-2">
                                     Enter Rent Start Date *
-                                    <input type="date" name="rent_start_date" class="form-control"
-                                        placeholder="Start Date Of Rent" required>
+                                    <input type="date" name="rent_start_date" v-model="rentStartOn" class="form-control"
+                                        placeholder="Start Date Of Rent" required @change="changeDate($event)">
                                 </div>
                                 <!-- <div class="form-group ">
                             <button type="button" class="btn btn-sm bg_purple text-white  round">Advance Rent</button>
@@ -171,12 +167,22 @@
                             <div class="d_flex">
                                 <div class="w-50 pe-lg-2">
                                     <p class="mb-0"> Do You Take Any Security Deposit ? </p>
-                                    <div class="form-group d-flex align-items-end">
+                                    <!-- <div class="form-group d-flex align-items-end">
                                         <button type="button" class="btn btn-sm bg_purple text-white  round"
-                                            @click="securityAmt = false">No</button>
+                                            @click="securityAmt = false ">No</button>
                                         <button type="button" class="btn btn-sm bg_purple text-white mx-2 round"
                                             @click="securityAmt = !false">Yes</button>
 
+                                        <input type="number" name="security_amount" class="form-control "
+                                            placeholder="Enter Sucurity Amount" v-if="securityAmt">
+                                    </div> -->
+                                    <div class="form-group d-flex align-items-center">
+                                        <input type="radio" id="s_amount1" name="s_amount" class="form-check-input "
+                                            @click="securityAmt = false" /> <label for="s_amount1"
+                                            class="px-2 me-2">No</label>
+                                        <input type="radio" id="s_amount2" name="s_amount" class="form-check-input" checked
+                                            @click="securityAmt = !false" /> <label for="s_amount2"
+                                            class="px-2">Yes</label>
                                         <input type="number" name="security_amount" class="form-control "
                                             placeholder="Enter Sucurity Amount" v-if="securityAmt">
                                     </div>
@@ -184,13 +190,16 @@
 
                                 <div class="w-50 ">
                                     <p class="mb-0"> Do You Take Montly maintenence Charges? </p>
-                                    <div class="form-group d-flex align-items-end">
-                                        <button type="button" class="btn btn-sm bg_purple text-white  round"
-                                            @click="mentainChrg = ''">No</button>
-                                        <button type="button" class="btn btn-sm bg_purple text-white mx-2 round"
-                                            @click="mentainChrg = !''">Yes</button>
-                                        <input type="number" name="mantenece_charge" class="form-control"
-                                            placeholder="Enter Sucurity Amount" v-if="mentainChrg">
+                                    <div class="form-group d-flex align-items-center">
+                                        <input type="radio" id="mentainChrg1" name="mentainChrg" class="form-check-input " checked
+                                        @click="mentainChrg = ''" /> <label for="mentainChrg1"
+                                            class="px-2 me-2">No</label>
+                                        <input type="radio" id="mentainChrg2" name="mentainChrg" class="form-check-input "
+                                        @click="mentainChrg = !''" /> <label for="mentainChrg2"
+                                            class="px-2">Yes</label>
+                                        <input type="number" name="mantenece_charge" class="form-control "
+                                            placeholder="Enter Sucurity Amount" v-if="mentainChrg" >
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -213,8 +222,8 @@
                                     <div v-if="perUnit">
                                         <div class="d_flex_between">
                                             <div class="form-group w-50 ">
-                                                <input type="text" name="e_per_unit" class="form-control"
-                                                    placeholder="Per Unit Price">
+                                                <input type="number" minlength="1" maxlength="2" name="e_per_unit"
+                                                    class="form-control" placeholder="Per Unit Price">
                                             </div>
                                             <div class="form-group w-50">
                                                 <input type="date" name="e_redaing_date" class="form-control"
@@ -275,8 +284,8 @@
                                     <div v-if="perUnit2">
                                         <div class="d_flex_between ">
                                             <div class="form-group w-50">
-                                                <input type="number" name="w_per_unit" class="form-control"
-                                                    placeholder="Per Unit Price">
+                                                <input type="number" minlength="1" maxlength="2" name="w_per_unit"
+                                                    class="form-control" placeholder="Per Unit Price">
                                             </div>
                                             <div class="form-group w-50">
                                                 <input type="date" name="w_redaing_date" class="form-control"
@@ -332,28 +341,28 @@
 
 <script>
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default {
     name: 'AddRoom',
     data() {
         return {
             response: [],
-            successAlert: false,
-            errorAlert: false,
-            // response2: [],
+            // successAlert: false,
+            // errorAlert: false,
             roomNumber: '',
             TenentName: '',
             mobileNumber: '',
             gender: '',
             totalMemeber: 1,
-            // occupation: "",
             idType: "",
             file: '',
             buildingName: "",
+            rentStartOn: "",
+            rentMode: '',
 
             loader: '',
             rowId: '',
-            // successMsg: '
             securityAmt: true,
             mentainChrg: '',
             perUnit: '',
@@ -365,12 +374,32 @@ export default {
             fixedMonthly2: '',
 
             goback: "",
-            requireMsg: ''
+            requireMsg: '',
+            img_url: null,
         }
     },
 
 
     methods: {
+
+
+        changeDate(e) {
+            if (this.rentMode === 'fixed date') {
+                let dt = e.target.value;
+                let last2 = dt.slice(-2);
+                if (last2 != '01') {
+                    Swal.fire({
+                        icon: 'error',
+                        text: 'Please select 1st Date of the month Because Your Rent mode is "1st day of the month"'
+                    });
+                    this.rentStartOn = '';
+                } else {
+                    console.log(last2, this.rentMode)
+                }
+            }
+
+
+        },
         billMode(e) {
             let bilValue = e.target.value;
             if (bilValue == 'charge per unit') {
@@ -438,6 +467,11 @@ export default {
             this.goback = false;
         },
 
+        previewImg(e) {
+            const file = e.target.files[0];
+            this.img_url = URL.createObjectURL(file);
+        },
+
         async fetchData(e) {
             console.log(e)
             this.rowId = this.$router.currentRoute.value.params.id;
@@ -451,7 +485,6 @@ export default {
             });
             if (Response.status == 200) {
                 this.response = Response.data;
-                // console.log(JSON.stringify(this.response))
                 this.buildingName = this.response[0].building_name;
                 // console.log(this.buildingName);
             } else {
@@ -464,9 +497,7 @@ export default {
             console.log(e)
             let form = document.getElementById('form2');
 
-
             this.file = this.$refs.file.files[0];
-            // let basepath = "http://localhost/rental_app/api/";
             let formData = new FormData(form);
             formData.append('file', this.file);
             console.log(formData);
@@ -477,19 +508,28 @@ export default {
                 }
             }).then(response => {
                 if (response.data.image == '') {
-                    this.errorAlert = true;
-                    this.successAlert = false;
-                    this.errorMessage = response.data.message;
-                    this.successMessage = '';
+                    Swal.fire({
+                        text: response.data.message,
+                    });
                     this.uploadedImage = '';
                 } else {
-                    this.errorAlert = false;
-                    this.successAlert = true;
-                    this.errorMessage = '';
-                    this.successMessage = response.data.message;
+                    this.$refs.file.value = '';
+                    Swal.fire({
+                        icon: "success",
+                        text: response.data.message,
+                        timer: 2000
+                    }).then(() => {
+                        this.$router.push({ name: 'MyPropertiesDetail' })
+                    });
+                    // this.errorAlert = false;
+                    // this.successAlert = true;
+                    // this.errorMessage = '';
+                    // this.successMessage = response.data.message;
+
                     // var image_html = "<img src='" + basepath + response.data.image + "' class='img-thumbnail' width='300' />";
                     // this.uploadedImage = image_html;
-                    this.$refs.file.value = '';
+
+
                 }
             });
 
@@ -500,6 +540,7 @@ export default {
         this.fetchData();
         let form2 = document.getElementById('form_2');
         form2.style.display = 'none';
+
     }
 }
 

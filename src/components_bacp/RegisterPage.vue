@@ -1,28 +1,30 @@
 <template>
-    <div class="container-fluid template"
+    <div class="container-fluid px-0 template"
         style="background-image: url('/images/abstract_01.webp');background-size: cover;">
-        <!-- style="background-image: url('/images/flats_with_garden.jpg'), url('/images/doted_bg11.png') ;  background-size: cover; background-blend-mode: overlay; " -->
+        <!-- style="background-image: url('/images/flats_with_garden.jpg'), url('/images/doted_bg11.png') ;
+           background-size: cover; background-blend-mode: overlay; " -->
+        <div class=" py-3 bg_purple">
+            <img src="images/rental_home_logo2.png" />
+            <h2 class="page_header">
+                <span class="text_orange">Rent</span><span class="text-light">Easy</span>
+            </h2>
+        </div>
         <h2> Create Account </h2>
-        <div class="row px-lg-5">
+        <div class="row px-lg-5 p-3">
             <div class="col-lg-4">
             </div>
             <div class="col-lg-4 text-start">
 
-                <h5 class="text-success text-center"> {{ successMsg }}
+                <!-- <h5 class="text-success text-center"> {{ successMsg }}
                 </h5>
                 <div class="alert alert-danger alert-dismissible" role="alert" v-if="notMatch">
                     {{ errorMessage }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-
-
-
-                <!-- <div v-if="errorAlert" class="alert alert-danger alert-dismissible">
-                    <a href="#" class="close" aria-label="close" @click="errorAlert = false">×</a>
-                    {{ errorMessage }}
                 </div> -->
 
-                <div class="form py-4 px-4">
+
+
+                <div class="form p-4">
                     <form @submit="postData($event)">
                         <div class="form-group">
 
@@ -77,10 +79,10 @@
                             <button type="submit" class="btn  bg_purple text-white  w-100 "> Register </button>
                         </div>
                         <div class="form-group text-secondary pt-2">
-                            Already have an account? 
-                            <router-link to="/login"><span class="text-dark">  Login  </span></router-link> 
+                            Already have an account?
+                            <router-link to="/login"><span class="text-dark"> Login </span></router-link>
                         </div>
-                        
+
                     </form>
                 </div>
 
@@ -93,6 +95,7 @@
 <script>
 
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default {
     name: 'RegisterPage',
@@ -102,10 +105,6 @@ export default {
             email: '',
             password: '',
             conformPass: '',
-            errorMessage: '',
-            successMsg: '',
-            notMatch: '',
-
         }
     },
     methods: {
@@ -122,25 +121,29 @@ export default {
                         confirm: this.conformPass
                     }
                 })
-                console.log(Axios)
+                console.log(Axios.data.sql_massege)
                 if (Axios.data.sql_massege === 'Inserted') {
-                    // console.log("qwery done")
-                    this.successMsg = "Updated Successfully !!";
+                    Swal.fire({
+                        title: "Registration Done !!",
+                        icon: "success",
+                        text: 'You can login now',
+                    }).then(() => {
+                        this.$router.push({ name: 'logIn' })
+                    })
                     // localStorage.setItem("userinfo", JSON.stringify(Axios.data))
-                    this.$router.push({ name: 'logIn' })
+
                 } else {
-                    this.notMatch = true;
-                    this.errorMessage = "Something went Wrong";
-                    setTimeout(() => {
-                        this.notMatch = false;
-                    }, 2000);
+                    Swal.fire({
+                        icon: "error",
+                        // title: "Something went wrong!",
+                        text: "Something went wrong!",
+                    });
                 }
             } else {
-                this.notMatch = true;
-                this.errorMessage = "Confirm Password mismatch";
-                setTimeout(() => {
-                    this.notMatch = false;
-                }, 2000);
+                Swal.fire({
+                    icon: "error",
+                    text: "Confirm Password Mismatch",
+                });
             }
         },
         refresh() {

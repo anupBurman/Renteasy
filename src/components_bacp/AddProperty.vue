@@ -7,7 +7,7 @@
             <div class="col-lg-4 text-start p-5">
                 <div>
                     <router-link to="/add_property">
-                        <button type="button" class="button-72 btn btn-default w-100 " role="button">
+                        <button type="button" class="button-72 btn btn-default w-100" role="button">
                             Add Property/Building
                         </button>
                     </router-link>

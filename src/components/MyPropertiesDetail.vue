@@ -110,16 +110,39 @@
                 </div>
             </div>
 
+
+            <!-- ===== for Shop ====== -->
             <div class="col-lg-6">
-                <div class="p-3 bg-dark text-light text-start"> Rooms/Flats </div>
-                <div class="text-start alert alert-warning p-3 d_flex" v-for="i in parseInt(shop_countr)" :key="i">
-                    <div>
-                        <i class="bi bi-house-heart-fill"> </i>
-                        <span class="px-1"> {{ response2.tenent_name }} </span>
-                    </div>
-                    <button class="btn btn-dark btn-sm round">
-                        Remove
+                
+                <div class="p-3 bg-dark text-light text-start"> Shops - {{ shop_countr }}
+                    <router-link :to="tabURL2 + rowId" >
+                        <button class="btn btn-sm  bg_purple text-white mx-lg-4  round">
+                            <i class="bi bi-plus-square-dotted"></i> Add Data in Shops
+                        </button>
+                    </router-link>
+                </div>
+                <div class="text-start alert alert-warning p-3 d_flex" v-for="(data, i) in output" :key="i">
+                    <router-link :to="`/tenent_profile/` + rowId + `/` + data.id + `/` + data.rent_start_date">
+                        <div class="d_flex rooms" id="room_s">
+                            <i class="bi bi-house-heart-fill"> </i>
+                            <div>
+                                <span class="px-1">Shop No. {{ data.shop_id }} </span><br>
+                                <span class="px-1">{{ data.tenent_name }} </span>
+                                <span class="px-1">{{ data.id }}</span>
+                            </div>
+                        </div>
+                    </router-link>
+                    <button class="btn btn-default btn-sm round">
+                        {{ data.rent_amount }}
                     </button>
+
+                    <router-link :to="`/edit_tenent/` + data.id">
+                        <button class="btn btn-dark btn-sm round">
+                           Edit 
+                        </button>
+                    </router-link>
+
+                    <!-- </div> -->
                 </div>
             </div>
         </div>
@@ -147,19 +170,22 @@ export default {
             response: [],
             // loader: '',
             // successMsg: '',
-            basePath: 'http://localhost/rental_app/api/',
+            basePath: 'http://rentshent.xyz/api/',
             imagePath: '',
             tabURL: "/add_room/",
+            tabURL2: "/add_shop/",
             rowId: '',
 
             errorAlert: '',
             errorMessage: '',
 
             response2: [],
+            output: [],
             // filteredData: [],
             TotalAmount: '',
             recivedAmount: '',
             AddRoom: true,
+            // AddShop: true,
         }
     },
     methods: {
@@ -173,6 +199,7 @@ export default {
         //     }
         // },
 
+        // if available room and occupied rooms is equal then this event will run
         addRoom() {
             // alert('You Have alredy Reached Maximum number of rooms in your property')
             // this.errorMessage = 'You Have alredy Reached Maximum number of rooms in your property';
@@ -184,12 +211,14 @@ export default {
                 console.log('hj')
             }
         },
+
+       
         async postData(e) {
             this.rowId = this.$router.currentRoute.value.params.id;
             console.log(e);
             const Response = await axios({
                 method: 'POST',
-                url: 'http://localhost/rental_app/api/my_properties_detail.php?id=' + this.rowId,
+                url: 'http://rentshent.xyz/api/my_properties_detail.php?id=' + this.rowId,
                 data: {
                     id: this.rowId,
                     building_name: this.buildingName,
@@ -209,7 +238,7 @@ export default {
             }
             const Response2 = await axios({
                 method: 'POST',
-                url: 'http://localhost/rental_app/api/tenent_details.php?id=' + this.rowId,
+                url: 'http://rentshent.xyz/api/tenent_details.php?id=' + this.rowId,
                 data: {
                 }
             })
@@ -218,14 +247,29 @@ export default {
                 // console.log(Response2.data[0].rent_start_date);
                 // console.log(JSON.stringify(this.response2))
             } else {
-                console.log("something went wrong dat couldnt fetch")
+                console.log("something went wrong data couldnt fetch")
+            }
+
+            // get shop details
+            const Output = await axios({
+                method: 'POST',
+                url: 'http://rentshent.xyz/api/tenent_shop_details.php?id=' + this.rowId,
+                data: {
+                }
+            })
+            if (Output.status == 200) {
+                this.output = Response2.data;
+                // console.log(Response2.data[0].rent_start_date);
+                // console.log(JSON.stringify(this.response2))
+            } else {
+                console.log("something went wrong data couldnt fetch")
             }
         },
 
         async getAmount() {
             const Response3 = await axios({
                 method: 'post',
-                url: 'http://localhost/rental_app/api/tenent_details.php',
+                url: 'http://rentshent.xyz/api/tenent_details.php',
                 data: {
                     prop_id: this.rowId,
                 }
@@ -246,7 +290,7 @@ export default {
             console.log(month)
             const Response4 = await axios({
                 method: 'post',
-                url: 'http://localhost/rental_app/api/tenent_details.php',
+                url: 'http://rentshent.xyz/api/tenent_details.php',
                 data: {
                     get_amount: this.rowId,
                 }
@@ -265,7 +309,7 @@ export default {
             if (confirm('Do you really want to delete this data ?')) {
                 const Response3 = await axios({
                     method: 'post',
-                    url: 'http://localhost/rental_app/api/delete_tenentr.php',
+                    url: 'http://rentshent.xyz/api/delete_tenentr.php',
                     data: {
                         tenentId: tid,
                     }
@@ -297,6 +341,10 @@ export default {
         if (this.response2.length == this.room_countr) {
             this.AddRoom = false;
         }
+        // if (this.output.length == this.shop_countr) {
+        //     this.AddShop = false;
+        // }
+       
     },
 }
 

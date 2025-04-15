@@ -87,12 +87,14 @@ export default {
             });
             if (Output.status == 200 && Output.data.status == false) {
                 // this.TotalAmount = Output.data;
+                // this.errorAlert = true;
+                this.successAlert = true;
+            }else if (Output.status == 200 && Output.data.status != false) {
+                
                 this.errorAlert = true;
                 setTimeout(() => {
                     this.errorAlert = false;
                 }, 2000);
-            }else if (Output.status == 200 && Output.data.status != false) {
-                this.successAlert = true;
             } 
           
             

@@ -319,7 +319,7 @@ export default {
             this.tenentId = tenentId
             const Response = await axios({
                 method: 'post',
-                url: 'http://localhost/rental_app/api/tenent_all_details.php',
+                url: 'http://rentshent.xyz/api/tenent_all_details.php',
                 data: {
                     id: this.tenentId,
                 }
@@ -363,7 +363,7 @@ export default {
             // console.log(tenentId)
             const Response2 = await axios({
                 method: 'post',
-                url: 'http://localhost/rental_app/api/electric_water_bill.php',
+                url: 'http://rentshent.xyz/api/electric_water_bill.php',
                 data: {
                     id: this.tenentId,
                     month: this.monthh
@@ -433,7 +433,7 @@ export default {
             if (confirm('Do you really want to delete this data ?')) {
                 const Response3 = await axios({
                     method: 'post',
-                    url: 'http://localhost/rental_app/api/delete_tenent.php',
+                    url: 'http://rentshent.xyz/api/delete_tenent.php',
                     data: {
                         tenentId: this.tenentId,
                     }

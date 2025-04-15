@@ -413,7 +413,7 @@ export default {
 
             const Response = await axios({
                 method: 'POST',
-                url: 'http://localhost/rental_app/api/tenent_all_details.php?id=' + this.rowId,
+                url: 'http://rentshent.xyz/api/tenent_all_details.php?id=' + this.rowId,
                 data: {
                     id: this.rowId,
                     building_name: this.buildingName,
@@ -452,7 +452,7 @@ export default {
             formData.append('file', this.file);
             console.log(formData);
 
-            await axios.post('http://localhost/rental_app/api/edit_tenent.php', formData, {
+            await axios.post('http://rentshent.xyz/api/edit_tenent.php', formData, {
                 header: {
                     'Content-Type': 'multipart/form-data'
                 }

@@ -53,7 +53,7 @@ export default {
             this.rowId = this.$router.currentRoute.value.params.id;
             const Response = await axios({
                 method: 'POST',
-                url: 'http://localhost/rental_app/api/my_properties_detail.php?id=' + this.rowId,
+                url: 'http://rentshent.xyz/api/my_properties_detail.php?id=' + this.rowId,
                 data: {
                     id: this.rowId,
                     building_name: this.buildingName,
@@ -74,7 +74,7 @@ export default {
 
             const Response2 = await axios({
                 method: 'POST',
-                url: 'http://localhost/rental_app/api/tenent_details.php?id=' + this.rowId,
+                url: 'http://rentshent.xyz/api/tenent_details.php?id=' + this.rowId,
                 data: {
 
                 }

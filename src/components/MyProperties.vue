@@ -18,6 +18,7 @@
                         </div>
                     </div>
                 </router-link>
+                
 
                 <div class="three_dots dropdown px-1" id="edit_prop">
                     <i class="fa fa-list-ul" id="dropdownMenuButton1" data-bs-toggle="dropdown"></i>
@@ -71,7 +72,7 @@ export default {
             response: [],
             loader: '',
             successMsg: '',
-            basePath: 'http://localhost/rental_app/api/',
+            basePath: 'http://rentshent.xyz/api/',
             imagePath: '',
             id: '',
         }
@@ -103,7 +104,7 @@ export default {
             try {
                 const Response = await axios({
                     method: 'post',
-                    url: 'http://localhost/rental_app/api/my_properties.php',
+                    url: 'http://rentshent.xyz/api/my_properties.php',
                     data: {
                         building_name: this.buildingName,
                         prop_city: this.propCity,
