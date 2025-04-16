@@ -62,7 +62,7 @@
             <div class="col-lg-4"></div>
             <div class="col-lg-4 text-start form p-4">
                 <!-- form start -->
-                <form @submit="forgotPassword($event)">
+                <form @submit="forgotPassword($event)" @touchend="forgotPassword($event)" >
                     <div class="form-group ">
                         <label>
                             <i class="fa fa-envelope" aria-hidden="true"></i>
