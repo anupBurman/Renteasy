@@ -19,7 +19,8 @@
                 </div>
 
                 <!-- form start -->
-                <form @submit="logIn($event)">
+                <!-- <form @submit="logIn($event)"> -->
+                    <form @submit.prevent="logIn">
                     <div class="form-group ">
                         <label>
                             <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -62,7 +63,7 @@
             <div class="col-lg-4"></div>
             <div class="col-lg-4 text-start form p-4">
                 <!-- form start -->
-                <form @submit="forgotPassword($event)" @touchend="forgotPassword($event)" >
+                <form @submit="forgotPassword($event)"  >
                     <div class="form-group ">
                         <label>
                             <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -102,8 +103,8 @@ export default {
         }
     },
     methods: {
-        async logIn(e) {
-            e.preventDefault();
+        async logIn() {
+            // e.preventDefault();
             // let email = this.email;
             // let pw = this.password;
             let qwery = await axios({
