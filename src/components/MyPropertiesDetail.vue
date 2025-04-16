@@ -170,7 +170,7 @@ export default {
             response: [],
             // loader: '',
             // successMsg: '',
-            basePath: 'http://rentshent.xyz/api/',
+            basePath: 'https://rentshent.xyz/api/',
             imagePath: '',
             tabURL: "/add_room/",
             tabURL2: "/add_shop/",
@@ -238,7 +238,7 @@ export default {
             }
             const Response2 = await axios({
                 method: 'POST',
-                url: 'http://rentshent.xyz/api/tenent_details.php?id=' + this.rowId,
+                url: 'https://rentshent.xyz/api/tenent_details.php?id=' + this.rowId,
                 data: {
                 }
             })
@@ -253,7 +253,7 @@ export default {
             // get shop details
             const Output = await axios({
                 method: 'POST',
-                url: 'http://rentshent.xyz/api/tenent_shop_details.php?id=' + this.rowId,
+                url: 'https://rentshent.xyz/api/tenent_shop_details.php?id=' + this.rowId,
                 data: {
                 }
             })
@@ -269,7 +269,7 @@ export default {
         async getAmount() {
             const Response3 = await axios({
                 method: 'post',
-                url: 'http://rentshent.xyz/api/tenent_details.php',
+                url: 'https://rentshent.xyz/api/tenent_details.php',
                 data: {
                     prop_id: this.rowId,
                 }
@@ -290,7 +290,7 @@ export default {
             console.log(month)
             const Response4 = await axios({
                 method: 'post',
-                url: 'http://rentshent.xyz/api/tenent_details.php',
+                url: 'https://rentshent.xyz/api/tenent_details.php',
                 data: {
                     get_amount: this.rowId,
                 }
@@ -309,7 +309,7 @@ export default {
             if (confirm('Do you really want to delete this data ?')) {
                 const Response3 = await axios({
                     method: 'post',
-                    url: 'http://rentshent.xyz/api/delete_tenentr.php',
+                    url: 'https://rentshent.xyz/api/delete_tenentr.php',
                     data: {
                         tenentId: tid,
                     }

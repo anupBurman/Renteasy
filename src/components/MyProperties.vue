@@ -104,7 +104,7 @@ export default {
             try {
                 const Response = await axios({
                     method: 'post',
-                    url: 'http://rentshent.xyz/api/my_properties.php',
+                    url: 'https://rentshent.xyz/api/my_properties.php',
                     data: {
                         building_name: this.buildingName,
                         prop_city: this.propCity,

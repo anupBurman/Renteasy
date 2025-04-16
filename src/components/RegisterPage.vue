@@ -22,8 +22,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div> -->
 
-
-
                 <div class="form p-4">
                     <form @submit="postData($event)">
                         <div class="form-group">
@@ -113,7 +111,7 @@ export default {
             if (this.password === this.conformPass) {
                 const Axios = await axios({
                     method: 'post',
-                    url: 'http://rentshent.xyz/api/users.php',
+                    url: 'https://rentshent.xyz/api/users.php',
                     data: {
                         name: this.name,
                         email: this.email,

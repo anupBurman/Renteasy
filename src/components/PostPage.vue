@@ -135,7 +135,7 @@ export default {
             this.loader = true;
             const Response = await axios({
                 method: 'post',
-                url: 'http://rentshent.xyz/api/add_building.php',
+                url: 'https://rentshent.xyz/api/add_building.php',
                 data: {
                     buildingName: this.buildingName,
                     address: this.address,
