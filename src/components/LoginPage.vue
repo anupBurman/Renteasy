@@ -9,7 +9,7 @@
             </h2>
         </div>
         <div class="row p-4" v-if="loginBlock">
-            <h5> Enter Credentials for Login </h5>
+            <h5> Enter Credentials to Login </h5>
 
             <div class="col-lg-4"></div>
             <div class="col-lg-4 text-start form p-4">
@@ -108,8 +108,7 @@ export default {
             // let pw = this.password;
             let qwery = await axios({
                 method: 'POST',
-                
-                url: 'https://192.168.126.224:8080/rental_app/api/user_login.php',
+                url: 'http://rentvent.shop/api/user_login.php',
                 data: {
                     email: this.email,
                     password: this.password,
