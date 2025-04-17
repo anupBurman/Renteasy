@@ -72,7 +72,7 @@ export default {
             response: [],
             loader: '',
             successMsg: '',
-            basePath: 'http://rentshent.xyz/api/',
+            basePath: 'http://localhost/rental_app/api/',
             imagePath: '',
             id: '',
         }
@@ -104,7 +104,7 @@ export default {
             try {
                 const Response = await axios({
                     method: 'post',
-                    url: 'https://rentshent.xyz/api/my_properties.php',
+                    url: 'http://localhost/rental_app/api/my_properties.php',
                     data: {
                         building_name: this.buildingName,
                         prop_city: this.propCity,

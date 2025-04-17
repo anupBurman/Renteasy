@@ -111,7 +111,7 @@ export default {
             if (this.password === this.conformPass) {
                 const Axios = await axios({
                     method: 'post',
-                    url: 'https://rentshent.xyz/api/users.php',
+                    url: 'http://localhost/rental_app/api/users.php',
                     data: {
                         name: this.name,
                         email: this.email,

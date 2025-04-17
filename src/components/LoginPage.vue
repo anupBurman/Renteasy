@@ -19,8 +19,7 @@
                 </div>
 
                 <!-- form start -->
-                <!-- <form @submit="logIn($event)"> -->
-                    <form @submit.prevent="logIn">
+                <form @submit="logIn($event)">
                     <div class="form-group ">
                         <label>
                             <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -103,13 +102,13 @@ export default {
         }
     },
     methods: {
-        async logIn() {
-            // e.preventDefault();
+        async logIn(e) {
+            e.preventDefault();
             // let email = this.email;
             // let pw = this.password;
             let qwery = await axios({
                 method: 'POST',
-                url: 'https://rentshent.xyz/api/user_login.php',
+                url: 'http://localhost/rental_app/api/user_login.php',
                 data: {
                     email: this.email,
                     password: this.password,
