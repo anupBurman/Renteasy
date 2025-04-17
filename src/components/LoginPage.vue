@@ -109,7 +109,7 @@ export default {
             let qwery = await axios({
                 method: 'POST',
                 
-                url: 'http://192.168.126.224:8080/rental_app/api/user_login.php',
+                url: 'https://192.168.126.224:8080/rental_app/api/user_login.php',
                 data: {
                     email: this.email,
                     password: this.password,

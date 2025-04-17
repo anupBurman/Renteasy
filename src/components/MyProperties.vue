@@ -72,7 +72,7 @@ export default {
             response: [],
             loader: '',
             successMsg: '',
-            basePath: 'http://192.168.126.224:8080/rental_app/api/',
+            basePath: 'https://192.168.126.224:8080/rental_app/api/',
             imagePath: '',
             id: '',
         }
@@ -104,7 +104,7 @@ export default {
             try {
                 const Response = await axios({
                     method: 'post',
-                    url: 'http://192.168.126.224:8080/rental_app/api/my_properties.php',
+                    url: 'https://192.168.126.224:8080/rental_app/api/my_properties.php',
                     data: {
                         building_name: this.buildingName,
                         prop_city: this.propCity,
