@@ -8,9 +8,9 @@
                 <span class="text_orange">Rent</span><span class="text-light">Easy</span>
             </h2>
         </div>
+
         <div class="row p-4" v-if="loginBlock">
             <h5> Enter Credentials to Login </h5>
-
             <div class="col-lg-4"></div>
             <div class="col-lg-4 text-start form p-4">
                 <div class="form-group text-secondary pt-2">
@@ -32,8 +32,8 @@
                             <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                             Password*
                         </label>
-                        <input type="password" maxlength="12" minlength="6" v-model="password" class="form-control" required
-                            placeholder="Enter Password">
+                        <input type="password" maxlength="12" minlength="6" v-model="password" class="form-control"
+                            required placeholder="Enter Password">
                     </div>
                     <div class="form-group text-secondary">
                         <input class="form-check-input me-1" type="checkbox" id="user_licence" value="user_licence"
@@ -47,12 +47,14 @@
                         <button type="submit" class="btn  bg_purple text-white  w-100 "> Button </button>
                     </div>
                     <div class="form-group text-secondary text-end mt-1">
-
                         <span class="text-dark" @click="forgotfunc()"> Forget Password ? </span>
-
                     </div>
                 </form>
             </div>
+          
+                <span class="loader-absolute" v-if="loader" ></span>
+          
+            
         </div>
 
         <div class="row p-4 " v-if="forgotPass">
@@ -62,7 +64,7 @@
             <div class="col-lg-4"></div>
             <div class="col-lg-4 text-start form p-4">
                 <!-- form start -->
-                <form @submit="forgotPassword($event)"  >
+                <form @submit="forgotPassword($event)">
                     <div class="form-group ">
                         <label>
                             <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -98,12 +100,14 @@ export default {
             userLicence: '',
             loginBlock: true,
             forgotPass: '',
+            loader: '',
 
         }
     },
     methods: {
         async logIn(e) {
             e.preventDefault();
+            this.loader = true;
             // let email = this.email;
             // let pw = this.password;
             let qwery = await axios({
@@ -120,6 +124,7 @@ export default {
                 localStorage.setItem("userinfo", JSON.stringify(qwery.data.sql_massege[0]))
                 // this.$router.push({ name: 'HomePage' })
                 window.location.reload();
+                this.loader = '';
 
             } else {
                 Swal.fire({

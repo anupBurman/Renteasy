@@ -311,6 +311,21 @@ button.btn:hover {
   animation: 1s rotate linear infinite;
 }
 
+.loader-absolute {
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  position: absolute;
+  margin-left: 47%;
+  margin-top: 12%;
+  border-width: 3px 2px 3px 2px;
+  border-style: solid dotted solid dotted;
+  border-color: #de3500 rgba(54, 53, 53, 0.3) #2c2c2c rgba(151, 107, 93, 0.3);
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: 1s rotate linear infinite;
+}
+
 .loader:before,
 .loader:after {
   content: '';
@@ -382,12 +397,18 @@ button.btn:hover {
   .info_card {
     margin-left: 16%;
   }
+
+  .loader-absolute {
+    margin-left: 40%;
+    margin-top: 20%;
+  }
 }
 
 @media (max-width:374px) {
   .file_upload {
     font-size: 0.8rem;
   }
+  
 
   .info_card {
     margin-left: 4%;
