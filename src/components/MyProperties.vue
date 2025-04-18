@@ -72,7 +72,7 @@ export default {
             response: [],
             loader: '',
             successMsg: '',
-            basePath: 'http://rentvent.shop/api/',
+            basePath: 'https://rentvent.shop/api/',
             imagePath: '',
             id: '',
         }

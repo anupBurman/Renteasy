@@ -108,7 +108,7 @@ export default {
             // let pw = this.password;
             let qwery = await axios({
                 method: 'POST',
-                url: 'http://rentvent.shop/api/user_login.php',
+                url: 'https://rentvent.shop/api/user_login.php',
                 data: {
                     email: this.email,
                     password: this.password,
