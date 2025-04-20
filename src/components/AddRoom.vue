@@ -477,7 +477,7 @@ export default {
             this.rowId = this.$router.currentRoute.value.params.id;
             const Response = await axios({
                 method: 'POST',
-                url: 'http://rentshent.xyz/api/my_properties_detail.php?id=' + this.rowId,
+                url: 'https://rentvent.shop/api/my_properties_detail.php?id=' + this.rowId,
                 data: {
                     id: this.rowId,
                     building_name: this.buildingName,
@@ -502,7 +502,7 @@ export default {
             formData.append('file', this.file);
             console.log(formData);
 
-            await axios.post('http://rentshent.xyz/api/add_rooms.php', formData, {
+            await axios.post('https://rentvent.shop/api/add_rooms.php', formData, {
                 header: {
                     'Content-Type': 'multipart/form-data'
                 }
