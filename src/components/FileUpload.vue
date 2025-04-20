@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid template"
         style="background-image: url('/images/yyy.jpg');  background-size: cover; background-blend-mode: overlay; ">
-        <h2 class="pb-4"> <span> Add Building Or House </span> </h2>
+        <h2 class="pb-4"> <span> Add Building  Or House </span> </h2>
 
         <div class="row px-lg-5 rounded add_property ">
             <div class="col-lg-4 px-0 rounded ">
