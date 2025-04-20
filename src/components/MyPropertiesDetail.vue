@@ -170,7 +170,7 @@ export default {
             response: [],
             // loader: '',
             // successMsg: '',
-            basePath: 'https://rentshent.xyz/api/',
+            basePath: 'https://rentvent.shop/api/',
             imagePath: '',
             tabURL: "/add_room/",
             tabURL2: "/add_shop/",
@@ -218,7 +218,7 @@ export default {
             console.log(e);
             const Response = await axios({
                 method: 'POST',
-                url: 'http://rentshent.xyz/api/my_properties_detail.php?id=' + this.rowId,
+                url: 'https://rentvent.shop/api/my_properties_detail.php?id=' + this.rowId,
                 data: {
                     id: this.rowId,
                     building_name: this.buildingName,
@@ -238,7 +238,7 @@ export default {
             }
             const Response2 = await axios({
                 method: 'POST',
-                url: 'https://rentshent.xyz/api/tenent_details.php?id=' + this.rowId,
+                url: 'https://rentvent.shop/api/tenent_details.php?id=' + this.rowId,
                 data: {
                 }
             })
@@ -253,7 +253,7 @@ export default {
             // get shop details
             const Output = await axios({
                 method: 'POST',
-                url: 'https://rentshent.xyz/api/tenent_shop_details.php?id=' + this.rowId,
+                url: 'https://rentvent.shop/api/tenent_shop_details.php?id=' + this.rowId,
                 data: {
                 }
             })
@@ -269,7 +269,7 @@ export default {
         async getAmount() {
             const Response3 = await axios({
                 method: 'post',
-                url: 'https://rentshent.xyz/api/tenent_details.php',
+                url: 'https://rentvent.shop/api/tenent_details.php',
                 data: {
                     prop_id: this.rowId,
                 }
@@ -290,7 +290,7 @@ export default {
             console.log(month)
             const Response4 = await axios({
                 method: 'post',
-                url: 'https://rentshent.xyz/api/tenent_details.php',
+                url: 'https://rentvent.shop/api/tenent_details.php',
                 data: {
                     get_amount: this.rowId,
                 }
@@ -309,7 +309,7 @@ export default {
             if (confirm('Do you really want to delete this data ?')) {
                 const Response3 = await axios({
                     method: 'post',
-                    url: 'https://rentshent.xyz/api/delete_tenentr.php',
+                    url: 'https://rentvent.shop/api/delete_tenentr.php',
                     data: {
                         tenentId: tid,
                     }
