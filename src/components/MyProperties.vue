@@ -1,14 +1,14 @@
 <template>
     <div class="container-fluid template" style="background-image: url('/images/smoke_bg.jpg');background-size: cover;">
-        <h2> Add Building Or House  </h2>
-        {{ response.length }}
+        <h2> Add Building Or House </h2>
+
         <!-- <span style="position: absolute; right: 3rem; top:4.2rem; "> 
                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i> 
             </span>     -->
 
-            <AddProperty v-if=" response.length == 0 " />
+        <AddProperty v-if="noProp" />
 
-        <div class="row py-4 d-flex justify-content-center" v-else >
+        <div class="row py-4 d-flex justify-content-center">
 
             <div class="col-lg-3 text-start card_wrap pb-3" v-for="(data, index) in response" :key="index">
                 <router-link :to="taburl + data.id">
@@ -16,11 +16,11 @@
                         <img :src="basePath + data.image_path" class="card-img-top p-3" alt="image">
                         <div class="card-body pt-0">
                             <h5 class="card-title"> {{ data.building_name }} {{ data.id }} </h5>
-                            <p class="card-text">{{ data.prop_address }} {{ data.prop_city }} Chhattisgarh</p>
+                            <p class="card-text">{{ data.address }} {{ data.prop_city }} </p>
                         </div>
                     </div>
                 </router-link>
-                
+
 
                 <div class="three_dots dropdown px-1" id="edit_prop">
                     <i class="fa fa-list-ul" id="dropdownMenuButton1" data-bs-toggle="dropdown"></i>
@@ -34,7 +34,9 @@
                         </li>
                         <li>
                             <a class="dropdown-item" href="#">
-                                <i class="fa fa-trash clr_orange pe-2" aria-hidden="true"></i> Delete Property
+                                <router-link :to="`/delete_property/` + data.id" @click="deleteTenent(data.id)" >
+                                    <i class="fa fa-trash clr_orange pe-2" aria-hidden="true"></i> Delete Property
+                                </router-link>
                             </a>
                         </li>
                     </ul>
@@ -57,6 +59,7 @@
 <script>
 import axios from 'axios';
 import AddProperty from './AddProperty.vue';
+import Swal from 'sweetalert2';
 // import { messaging } from "../firebase"
 // import getMessaging from 'firebase/messaging';
 // import { getToken } from "firebase/messaging";
@@ -71,7 +74,7 @@ export default {
             buildingName: '',
             propCity: "",
             propAddress: "",
-            noProperty: true,
+            noProp: '',
 
             response: [],
             loader: '',
@@ -79,9 +82,10 @@ export default {
             basePath: 'https://rentvent.shop/api/',
             imagePath: '',
             id: '',
+            usermail: '',
         }
     },
-    components:{
+    components: {
         AddProperty,
     },
 
@@ -113,6 +117,7 @@ export default {
                     method: 'post',
                     url: 'https://rentvent.shop/api/my_properties.php',
                     data: {
+                        user_email: this.usermail,
                         building_name: this.buildingName,
                         prop_city: this.propCity,
                         prop_address: this.propAddress,
@@ -125,20 +130,48 @@ export default {
                     this.loader = false;
                     // console.log(Response.data);
                     this.response = Response.data;
-                    // console.log(JSON.stringify(this.response))
-                } else {
+                    Response.data.length == 0 ? this.noProp = true : this.noProp = '';
+                }
+                else {
                     console.log("something went wrong")
                     // this.$router.push({ path: '/Tab-View/'})
                 }
             } catch (error) {
-                this.$router.push({ path: '/error_page/'})
+                this.$router.push({ path: '/error_page/' })
             }
 
 
 
         },
+        // DELETE ALL TENENT DATA
+        async deleteTenent(e) {
+            if (confirm('Do you really want to delete the property ? ')) {
+                const Response3 = await axios({
+                    method: 'post',
+                    url: 'https://rentvent.shop/api/delete_property.php',
+                    data: {
+                        propId: e,
+                    }
+                });
+                if (Response3.status == 200) {
+                    Swal.fire({
+                        icon: "success",
+                        text: 'Tenent Data Deleted ',
+                        showConfirmButton: false,
+                        timer: 2000
+                    }).then(() => {
+                        this.$router.push({ name: 'MyProperties' })
+
+                    });
+                } else {
+                    console.log("something went wrong")
+                }
+            }
+        },
     },
     mounted() {
+        let localUser = localStorage.getItem("userinfo");
+        this.usermail = JSON.parse(localUser);
         this.postData();
         // this.requestPermit()
 

@@ -21,9 +21,9 @@
                     <!-- <li class="nav-item" @click="hideMenu()">
                         <a class="nav-link"> <router-link to="/Tab-View"> Tab View </router-link> </a>
                     </li> -->
-                    <li class="nav-item" @click="hideMenu()">
+                    <!-- <li class="nav-item" @click="hideMenu()">
                         <a class="nav-link"> <router-link to="/add_property"> Post </router-link> </a>
-                    </li>
+                    </li> -->
                     <!-- <li class="nav-item" @click="hideMenu($event)">
                         <a class="nav-link"> <router-link to="/ref"> Ref </router-link> </a>
                     </li> -->

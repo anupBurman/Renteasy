@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid mx-lg-4 ">
-        <h2> Add Building Or House dfdf </h2>
+        <h2> Add Building Or House </h2>
 
         <div class="row">
             <div class="col-lg-4 text-start form p-4">
@@ -135,7 +135,7 @@ export default {
             this.loader = true;
             const Response = await axios({
                 method: 'post',
-                url: 'https://rentshent.xyz/api/add_building.php',
+                url: 'http://localhost/rental_app/api/add_building.php',
                 data: {
                     buildingName: this.buildingName,
                     address: this.address,

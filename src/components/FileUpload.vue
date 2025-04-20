@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid template"
         style="background-image: url('/images/yyy.jpg');  background-size: cover; background-blend-mode: overlay; ">
-        <h2 class="pb-4"> <span> Add Building Or House</span> </h2>
+        <h2 class="pb-4"> <span> Add Building Or House </span> </h2>
 
         <div class="row px-lg-5 rounded add_property ">
             <div class="col-lg-4 px-0 rounded ">
@@ -22,6 +22,7 @@
 
                 <div class="form p-4">
                     <form id="form" @submit.prevent="btnUpload($event)">
+                        <input type="hidden" name="user_email" class="form-control" v-model="usermail" required>
                         <!-- 1 -->
                         <div class="form-group ">
                             <input type="text" name="building_name" class="form-control" v-model="buildingName"
@@ -166,7 +167,8 @@ export default {
             // successAlert: false,
             // errorAlert: false,
             uploadedImage: '',
-            img_url: null
+            img_url: null,
+            usermail: ''
         }
     },
 
@@ -243,6 +245,11 @@ export default {
 
         }
     },
+    mounted() {
+        let localUser = localStorage.getItem("userinfo");
+        this.usermail = JSON.parse(localUser);
+
+    }
 
 }
 

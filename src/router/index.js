@@ -25,6 +25,7 @@ import EditProperty from "@/components/edit/EditProperty.vue";
 import TermsConditions from "@/components/TermsConditions.vue";
 import ErrorPage from "@/components/ErrorPage.vue";
 import AddShop from "@/components/AddShop.vue";
+import DeleteProperty from "@/components/delete/DeleteProperty.vue";
 
 
 
@@ -143,6 +144,11 @@ const routes = [
     path: '/edit_property/:propId',
     name: 'EditProperty',
     component: EditProperty
+   },
+   {
+    path: '/delete_property/:propId',
+    name: 'DeleteProperty',
+    component: DeleteProperty
    },
    {
     path: '/terms_conditions',

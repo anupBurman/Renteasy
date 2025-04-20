@@ -131,6 +131,7 @@ export default {
                     icon: "error",
                     text: "Email or Password Wrong !",
                 });
+                this.loader = '';
             }
         },
         forgotfunc() {
