@@ -2,7 +2,7 @@
     <div class="container-fluid template" style="background-image: url('/images/yyy.jpg');background-size: cover;">
         <h2> Add Tenent Detail In {{ buildingName }} </h2>
 
-        <div class="row">
+        <div class="row pb-5">
             <form id="form" @submit.prevent="fetchData($event)">
                 <div class="form-group ">
                     <input type="hidden" name="prop_name" class="form-control" placeholder="Enter Room/Flat Number">
@@ -15,7 +15,7 @@
                     <button type="button" class="btn-close" @click="successAlert = false" aria-label="Close"></button>
                 </div>
                  -->
-                <div class="form p-4">
+                <div class="form p-4 ">
                     <div class="d_flex_between pb-2">
                         <h4 class="mb-0"> Add Tenent Details </h4>
                         <button class="btn bg_purple btn-sm px-3 round" v-if="goback" @click="goBack()">
