@@ -1,8 +1,6 @@
 <template>
-    <div class="container-fluid vh-100 px-0" style="background-image: url('/images/yyy.jpg');  background-size: cover; background-blend-mode: overlay;" >
-     
+    <div class="container-fluid vh-100 px-0" >
         <div class="row p-4 ">
-            <!-- <h5> Please Fill This To create Your Profile </h5> -->
             <div class="col-lg-4"></div>
             <div class="col-lg-4 text-start p-5">
                 <div>
@@ -16,6 +14,7 @@
             <div class="col-lg-4">
             </div>
         </div>
+
     </div>
 </template>
 

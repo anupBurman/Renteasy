@@ -1,12 +1,14 @@
 <template>
     <div class="container-fluid template" style="background-image: url('/images/smoke_bg.jpg');background-size: cover;">
-        <h2> Add Building Or House </h2>
-
+        <h2> Add Building Or House  </h2>
+        {{ response.length }}
         <!-- <span style="position: absolute; right: 3rem; top:4.2rem; "> 
                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i> 
             </span>     -->
 
-        <div class="row py-4 d-flex justify-content-center">
+            <AddProperty v-if=" response.length == 0 " />
+
+        <div class="row py-4 d-flex justify-content-center" v-else >
 
             <div class="col-lg-3 text-start card_wrap pb-3" v-for="(data, index) in response" :key="index">
                 <router-link :to="taburl + data.id">
@@ -54,6 +56,7 @@
 
 <script>
 import axios from 'axios';
+import AddProperty from './AddProperty.vue';
 // import { messaging } from "../firebase"
 // import getMessaging from 'firebase/messaging';
 // import { getToken } from "firebase/messaging";
@@ -68,6 +71,7 @@ export default {
             buildingName: '',
             propCity: "",
             propAddress: "",
+            noProperty: true,
 
             response: [],
             loader: '',
@@ -76,6 +80,9 @@ export default {
             imagePath: '',
             id: '',
         }
+    },
+    components:{
+        AddProperty,
     },
 
     methods: {
