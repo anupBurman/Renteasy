@@ -261,9 +261,9 @@ button.btn:hover {
 /*  custom tooltip */
 .info_card {
   position: absolute;
-  width: 250px;
+  width: 400px;
   margin-left: 7%;
-  margin-top: -100px;
+  margin-top: -140px;
   padding: 0.8rem;
   display: none;
   font-weight: 500;
@@ -272,6 +272,7 @@ button.btn:hover {
 .info_btn:hover+.info_card {
   display: block;
   cursor: pointer;
+  transition: all 0.5s;
 }
 
 /* .alert a.close {
@@ -393,11 +394,11 @@ button.btn:hover {
   .d_flex .w-50 {
     width: unset !important;
   }
-
   .info_card {
-    margin-left: 16%;
+    width: 300px;
+    margin-left: 0%;
+    margin-top: -50%;
   }
-
   .loader-absolute {
     margin-left: 40%;
     margin-top: 20%;
@@ -408,10 +409,9 @@ button.btn:hover {
   .file_upload {
     font-size: 0.8rem;
   }
-  
-
   .info_card {
-    margin-left: 4%;
+    width: 280px;
+    margin-left: 0%;
   }
 }
 </style>
