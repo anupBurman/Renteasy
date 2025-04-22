@@ -368,6 +368,7 @@ export default {
             perUnit: '',
             govBill: '',
             fixedMonthly: '',
+            noElectricity: '',
 
             perUnit2: '',
             govBill2: '',
@@ -412,7 +413,13 @@ export default {
                 this.fixedMonthly = true;
                 this.perUnit = '';
                 this.govBill = '';
-            } else {
+            }  else if (bilValue == 'none') {
+                this.fixedMonthly = '';
+                this.perUnit = '';
+                this.govBill = '';
+                this.noElectricity = true;
+            }  
+            else {
                 this.fixedMonthly = '';
                 this.perUnit = '';
                 this.govBill = '';

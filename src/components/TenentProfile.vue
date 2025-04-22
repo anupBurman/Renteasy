@@ -215,7 +215,7 @@
                     <div class="col-6 " v-if="response.bijli_bill === 'govt billing'">
                         <div class="d_flex_between">
                             <span> Monthly Rent </span>
-                            <span class="text_bold"> {{ response.rent_amount }} </span>
+                            <span class="text_bold"> {{ data.rent_amount }} </span>
                         </div>
                         <!-- <div class="d_flex_between ">
                             <span> Electricity By Govt. Meter </span>
@@ -235,6 +235,27 @@
                             <span class="text_bold">
                                 {{ subTotal = parseInt(response.e_fixed_monthly) + parseInt(response.rent_amount) +
                                     parseInt(response.mantenece_charge) }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- IF ELECTRICITY CHARGES BY GOVT. METER  -->
+                    <div class="col-6 " v-if="response.bijli_bill === 'none'">
+                        <div class="d_flex_between">
+                            <span> Monthly Rent </span>
+                            <span class="text_bold"> {{ data.rent_amount }} </span>
+                        </div>
+                        <div class="d_flex_between mb-5 pb-4">
+                            <span> Monthly Mantenece Charges </span>
+                            <span class="text_bold">
+                                {{ response.mantenece_charge }}
+                            </span>
+                        </div>
+                        <hr>
+                        <div class="d_flex_between  ">
+                            <span> Sub-Total </span>
+                            <span class="text_bold">
+                                {{ subTotal =  parseInt(response.rent_amount) + parseInt(response.mantenece_charge) }}
                             </span>
                         </div>
                     </div>
