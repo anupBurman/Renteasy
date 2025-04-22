@@ -5,9 +5,7 @@
         {{ response2 }} 
         <div class="row px-lg-5 profile_comp ">
             <div class="py-3 ">
-                <!-- <router-link :to="`/tenent_reciept/` + response.prop_id + `/` + response.id + `/` + monthh">
-                    <button type="button" class="btn  bg_success text-white mx-lg-4  round"> Recieve Payments </button>
-                </router-link> -->
+               
                 <router-link :to="`/ganrate_bill/` + response.prop_id + `/` + response.id + `/` + monthh">
                     <button type="button" class="btn  bg_success text-white mx-lg-4  round"> Ganerate Bill </button>
                 </router-link>
