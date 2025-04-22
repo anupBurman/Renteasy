@@ -177,7 +177,7 @@
                         <hr>
                         <div class="d_flex_between  ">
                             <span> Sub-Total </span>
-                            <span class="text_bold"> {{ subTotal = elecricityCharge + parseInt(response.rent_amount) +
+                            <span class="text_bold"> {{ subTotal = elecricityCharge + parseInt(data.recieved_amount) +
                                 parseInt(response.mantenece_charge) }}
                             </span>
                         </div>
@@ -187,7 +187,7 @@
                     <div class="col-6 " v-if="response.e_fixed_monthly > 10">
                         <div class="d_flex_between">
                             <span> Monthly Rent </span>
-                            <span class="text_bold"> {{ data.recieved_amount }} </span>
+                            <span class="text_bold"> {{ response.recieved_amount }} </span>
                         </div>
                         <div class="d_flex_between ">
                             <span> Electricity fixed Charge </span>
@@ -243,7 +243,7 @@
                     <div class="col-6 " v-if="response.bijli_bill === 'none'">
                         <div class="d_flex_between">
                             <span> Monthly Rent </span>
-                            <span class="text_bold"> {{ data.rent_amount }} </span>
+                            <span class="text_bold"> {{ response.rent_amount }} </span>
                         </div>
                         <div class="d_flex_between mb-5 pb-4">
                             <span> Monthly Mantenece Charges </span>
@@ -255,7 +255,7 @@
                         <div class="d_flex_between  ">
                             <span> Sub-Total </span>
                             <span class="text_bold">
-                                {{ subTotal =  parseInt(response.rent_amount) + parseInt(response.mantenece_charge) }}
+                                {{ subTotal =  parseInt(data.recieved_amount) + parseInt(response.mantenece_charge) }}
                             </span>
                         </div>
                     </div>
