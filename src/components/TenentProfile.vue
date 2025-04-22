@@ -1,8 +1,8 @@
 <template>
     <div class="container-fluid ">
-        <!-- {{ response }}
+       {{ response }}
         <br> <br>
-        {{ response2 }} -->
+        {{ response2 }} 
         <div class="row px-lg-5 profile_comp ">
             <div class="py-3 ">
                 <!-- <router-link :to="`/tenent_reciept/` + response.prop_id + `/` + response.id + `/` + monthh">

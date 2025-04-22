@@ -180,8 +180,8 @@
                                         <input type="radio" id="s_amount1" name="s_amount" class="form-check-input "
                                             @click="securityAmt = false" /> <label for="s_amount1"
                                             class="px-2 me-2">No</label>
-                                        <input type="radio" id="s_amount2" name="s_amount" class="form-check-input" checked
-                                            @click="securityAmt = !false" /> <label for="s_amount2"
+                                        <input type="radio" id="s_amount2" name="s_amount" class="form-check-input"
+                                            checked @click="securityAmt = !false" /> <label for="s_amount2"
                                             class="px-2">Yes</label>
                                         <input type="number" name="security_amount" class="form-control "
                                             placeholder="Enter Sucurity Amount" v-if="securityAmt">
@@ -191,15 +191,15 @@
                                 <div class="w-50 ">
                                     <p class="mb-0"> Do You Take Montly maintenence Charges? </p>
                                     <div class="form-group d-flex align-items-center">
-                                        <input type="radio" id="mentainChrg1" name="mentainChrg" class="form-check-input " checked
-                                        @click="mentainChrg = ''" /> <label for="mentainChrg1"
-                                            class="px-2 me-2">No</label>
-                                        <input type="radio" id="mentainChrg2" name="mentainChrg" class="form-check-input "
-                                        @click="mentainChrg = !''" /> <label for="mentainChrg2"
-                                            class="px-2">Yes</label>
+                                        <input type="radio" id="mentainChrg1" name="mentainChrg"
+                                            class="form-check-input " checked @click="mentainChrg = ''" /> <label
+                                            for="mentainChrg1" class="px-2 me-2">No</label>
+                                        <input type="radio" id="mentainChrg2" name="mentainChrg"
+                                            class="form-check-input " @click="mentainChrg = !''" /> <label
+                                            for="mentainChrg2" class="px-2">Yes</label>
                                         <input type="number" name="mantenece_charge" class="form-control "
-                                            placeholder="Enter Sucurity Amount" v-if="mentainChrg" >
-                                        
+                                            placeholder="Enter Sucurity Amount" v-if="mentainChrg">
+
                                     </div>
                                 </div>
                             </div>
@@ -381,8 +381,6 @@ export default {
 
 
     methods: {
-
-
         changeDate(e) {
             if (this.rentMode === 'fixed date') {
                 let dt = e.target.value;
@@ -528,8 +526,6 @@ export default {
 
                     // var image_html = "<img src='" + basepath + response.data.image + "' class='img-thumbnail' width='300' />";
                     // this.uploadedImage = image_html;
-
-
                 }
             });
 
@@ -540,11 +536,8 @@ export default {
         this.fetchData();
         let form2 = document.getElementById('form_2');
         form2.style.display = 'none';
-
     }
 }
-
-
 </script>
 
 <style>
@@ -553,13 +546,11 @@ export default {
     max-height: 65px;
     min-height: 60px;
 }
-
 .file_upload {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-
 .file_upload input {
     padding: 1.6rem;
 }
