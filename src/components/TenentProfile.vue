@@ -1,8 +1,8 @@
 <template>
     <div class="container-fluid ">
-       {{ response }}
+       <!-- {{ response }} -->
         <br> <br>
-        {{ response2.data }} 
+        <!-- {{ response2 }}  -->
         <div class="row px-lg-5 profile_comp ">
             <div class="py-3 ">
                
@@ -187,7 +187,7 @@
                     <div class="col-6 " v-if="response.e_fixed_monthly > 10">
                         <div class="d_flex_between">
                             <span> Monthly Rent </span>
-                            <span class="text_bold"> {{ response.rent_amount }} </span>
+                            <span class="text_bold"> {{ data.recieved_amount }} </span>
                         </div>
                         <div class="d_flex_between ">
                             <span> Electricity fixed Charge </span>
@@ -205,7 +205,7 @@
                         <div class="d_flex_between  ">
                             <span> Sub-Total </span>
                             <span class="text_bold">
-                                {{ subTotal = parseInt(response.e_fixed_monthly) + parseInt(response.rent_amount) +
+                                {{ subTotal = parseInt(response.e_fixed_monthly) + parseInt(data.recieved_amount) +
                                     parseInt(response.mantenece_charge) }}
                             </span>
                         </div>
