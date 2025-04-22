@@ -2,7 +2,7 @@
     <div class="container-fluid ">
        {{ response }}
         <br> <br>
-        {{ response2.recieved_amount }} 
+        {{ response2.data }} 
         <div class="row px-lg-5 profile_comp ">
             <div class="py-3 ">
                
