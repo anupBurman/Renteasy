@@ -122,6 +122,7 @@ export default {
         async logIn(e) {
             e.preventDefault();
             this.loader = true;
+            this.loginBtn = '';
             // let email = this.email;
             // let pw = this.password;
             let qwery = await axios({
@@ -138,7 +139,6 @@ export default {
                 localStorage.setItem("userinfo", JSON.stringify(qwery.data.sql_massege[0]))
                 // this.$router.push({ name: 'HomePage' })
                 window.location.reload();
-                this.loader = '';
 
             } else {
                 Swal.fire({
@@ -146,6 +146,7 @@ export default {
                     text: "Email or Password Wrong !",
                 });
                 this.loader = '';
+                this.loginBtn = true;
             }
         },
         forgotfunc() {
