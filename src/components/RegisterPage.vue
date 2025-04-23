@@ -74,7 +74,7 @@
                                 class="form-control" placeholder="Password">
                         </div>
                         <div>
-                            <button type="submit" class="btn  bg_purple text-white  w-100 "> Register </button>
+                            <button type="submit" class="btn  bg_purple text-white  w-100" v-show="signInBtn" > Register </button>
                         </div>
                         <div class="form-group text-secondary pt-2">
                             Already have an account?
@@ -85,6 +85,7 @@
                 </div>
 
             </div>
+            <span class="loader-absolute " v-show="loader"> </span>
         </div>
     </div>
 </template>
@@ -103,11 +104,15 @@ export default {
             email: '',
             password: '',
             conformPass: '',
+            loader: false,
+            signInBtn: true,
         }
     },
     methods: {
         async postData(e) {
             e.preventDefault();
+            this.loader = true;
+            this.signInBtn = '';
             if (this.password === this.conformPass) {
                 const Axios = await axios({
                     method: 'post',
@@ -136,12 +141,16 @@ export default {
                         // title: "Something went wrong!",
                         text: "Something went wrong!",
                     });
+                    this.loader = false;
+                    this.signInBtn = true;
                 }
             } else {
                 Swal.fire({
                     icon: "error",
                     text: "Confirm Password Mismatch",
                 });
+                this.loader = false;
+                    this.signInBtn = true;
             }
         },
         refresh() {
