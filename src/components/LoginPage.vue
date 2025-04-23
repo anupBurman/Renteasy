@@ -44,17 +44,19 @@
                         </router-link>
                     </div>
                     <div>
-                        <button type="submit" class="btn  bg_purple text-white  w-100 "> Button </button>
+                        <button type="button" class="btn  bg_purple text-white  w-100 " v-show="loader">
+                            <span class="loader-sm"> </span>
+                        </button>
+                        <button type="submit" class="btn  bg_purple text-white  w-100 " v-show="loginBtn"> Login
+                        </button>
                     </div>
                     <div class="form-group text-secondary text-end mt-1">
                         <span class="text-dark" @click="forgotfunc()"> Forget Password ? </span>
                     </div>
                 </form>
             </div>
-          
-                <span class="loader-absolute" v-if="loader" ></span>
-          
-            
+
+
         </div>
 
         <div class="row p-4 " v-if="forgotPass">
@@ -74,7 +76,14 @@
                             required>
                     </div>
                     <div>
-                        <button type="submit" class="btn  bg_purple text-white  w-100 "> Button </button>
+                        <!-- on submit this will show -->
+                        <button type="button" class="btn  bg_purple text-white  w-100" v-show="loader2">
+                            <span class="loader-sm"></span>
+                        </button>
+
+                        <!-- default this will show -->
+                        <button type="submit" class="btn  bg_purple text-white  w-100" v-show="forgotBtn"> Button
+                        </button>
                     </div>
                 </form>
             </div>
@@ -100,7 +109,12 @@ export default {
             userLicence: '',
             loginBlock: true,
             forgotPass: '',
+            loginBtn: true,
             loader: '',
+
+            loader2: '',
+            forgotBtn: true,
+
 
         }
     },
@@ -140,6 +154,8 @@ export default {
         },
         async forgotPassword(e) {
             e.preventDefault();
+            this.forgotBtn = '';
+            this.loader2 = true;
             let qwery2 = await axios({
                 method: 'POST',
                 url: 'https://rentshent.xyz/api/forgot_password.php',
@@ -152,15 +168,21 @@ export default {
                 // localStorage.setItem("userinfo", JSON.stringify(qwery.data.sql_massege[0]))
                 // this.$router.push({ name: 'HomePage' })
                 // window.location.reload();
+                this.forgotBtn = true;
+                this.loader2 = '';
                 Swal.fire({
                     icon: "success",
-                    text: "mail sent successfully",
-                });
+                    text: "mail sent successfully, please check your mail",
+                }).then(() => {
+                    this.$router.push({ name: 'logIn' })
+                })
             } else {
                 Swal.fire({
                     icon: "error",
                     text: "This Email is Not Registered With Our Database, Please try with Onother Email Id !",
                 });
+                this.forgotBtn = true;
+                this.loader2 = '';
             }
         }
     },

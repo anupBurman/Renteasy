@@ -74,6 +74,9 @@
                                 class="form-control" placeholder="Password">
                         </div>
                         <div>
+                            <button type="button" class="btn  bg_purple text-white  w-100 " v-show="loader">
+                                <span class="loader-sm"> </span>
+                            </button>
                             <button type="submit" class="btn  bg_purple text-white  w-100" v-show="signInBtn" > Register </button>
                         </div>
                         <div class="form-group text-secondary pt-2">
@@ -85,7 +88,6 @@
                 </div>
 
             </div>
-            <span class="loader-absolute " v-show="loader"> </span>
         </div>
     </div>
 </template>

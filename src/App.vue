@@ -312,8 +312,8 @@ button.btn:hover {
   animation: 1s rotate linear infinite;
 }
 .loader-sm {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   display: inline-block;
   position: relative;
   border-width: 3px 2px 3px 2px;
