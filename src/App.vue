@@ -311,6 +311,18 @@ button.btn:hover {
   box-sizing: border-box;
   animation: 1s rotate linear infinite;
 }
+.loader-sm {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  position: relative;
+  border-width: 3px 2px 3px 2px;
+  border-style: solid dotted solid dotted;
+  border-color: #de3500 rgba(54, 53, 53, 0.3) #2c2c2c rgba(151, 107, 93, 0.3);
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: 1s rotate linear infinite;
+}
 
 .loader-absolute {
   width: 48px;
