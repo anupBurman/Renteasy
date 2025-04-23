@@ -78,7 +78,7 @@
                         </div>
                         <div class="form-group text-secondary pt-2">
                             Already have an account?
-                            <router-link to="/login"><span class="text-dark"> Login <span class="loader-sm">  </span>  </span></router-link>
+                            <router-link to="/login"><span class="text-dark"> Login  </span></router-link>
                         </div>
 
                     </form>
