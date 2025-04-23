@@ -322,7 +322,8 @@
                                 <button type="button" class="btn  bg_purple text-white  w-100" v-show="loader2">
                                     <span class="loader-sm"></span>
                                 </button>
-                                <button type="submit" name="submit" class="btn bg_purple text-light  form-control">
+                                <button type="submit" name="submit" class="btn bg_purple text-light  form-control"
+                                    v-show="submitBtn">
                                     Submit
                                 </button>
                             </div>
