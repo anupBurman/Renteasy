@@ -319,12 +319,15 @@
                             </div>
 
                             <div class="form-group py-2">
+                                <button type="button" class="btn  bg_purple text-white  w-100" v-show="loader2">
+                                    <span class="loader-sm"></span>
+                                </button>
                                 <button type="submit" name="submit" class="btn bg_purple text-light  form-control">
                                     Submit
                                 </button>
                             </div>
                             <div class="form-group ">
-                                <span class="loader" v-if="loader"></span>
+                                <span class="loader-absolute" v-if="loader"></span>
                             </div>
                             <!-- <div v-html="uploadedImage"></div> -->
                         </div>
@@ -377,6 +380,8 @@ export default {
             goback: "",
             requireMsg: '',
             img_url: null,
+            loader2: '',
+            submitBtn: true,
         }
     },
 
@@ -413,12 +418,12 @@ export default {
                 this.fixedMonthly = true;
                 this.perUnit = '';
                 this.govBill = '';
-            }  else if (bilValue == 'none') {
+            } else if (bilValue == 'none') {
                 this.fixedMonthly = '';
                 this.perUnit = '';
                 this.govBill = '';
                 this.noElectricity = true;
-            }  
+            }
             else {
                 this.fixedMonthly = '';
                 this.perUnit = '';
@@ -500,6 +505,8 @@ export default {
 
         async postData(e) {
             console.log(e)
+            this.loader2 = true;
+            this.submitBtn = '';
             let form = document.getElementById('form2');
 
             this.file = this.$refs.file.files[0];
@@ -512,6 +519,8 @@ export default {
                     'Content-Type': 'multipart/form-data'
                 }
             }).then(response => {
+                this.loader2 = '';
+                this.submitBtn = true;
                 if (response.data.image == '') {
                     Swal.fire({
                         text: response.data.message,
@@ -553,11 +562,13 @@ export default {
     max-height: 65px;
     min-height: 60px;
 }
+
 .file_upload {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
 .file_upload input {
     padding: 1.6rem;
 }

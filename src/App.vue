@@ -318,7 +318,7 @@ button.btn:hover {
   position: relative;
   border-width: 3px 2px 3px 2px;
   border-style: solid dotted solid dotted;
-  border-color: #de3500 rgba(54, 53, 53, 0.3) #2c2c2c rgba(151, 107, 93, 0.3);
+  border-color: #f7f7f7 rgba(54, 53, 53, 0.3) #2c2c2c rgba(151, 107, 93, 0.3);
   border-radius: 50%;
   box-sizing: border-box;
   animation: 1s rotate linear infinite;
@@ -329,8 +329,8 @@ button.btn:hover {
   height: 48px;
   display: inline-block;
   position: absolute;
-  margin-left: 47%;
-  margin-top: 12%;
+  left: 48%;
+  top: 45%;
   border-width: 3px 2px 3px 2px;
   border-style: solid dotted solid dotted;
   border-color: #de3500 rgba(54, 53, 53, 0.3) #2c2c2c rgba(151, 107, 93, 0.3);
@@ -412,8 +412,7 @@ button.btn:hover {
     margin-top: -50%;
   }
   .loader-absolute {
-    margin-left: 40%;
-    margin-top: 20%;
+    left: 45%;
   }
 }
 

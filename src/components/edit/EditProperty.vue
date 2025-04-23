@@ -10,7 +10,7 @@
 
             <div class="col-lg-4 text-start ">
                 <!-- <h6 class="alert alert-success" v-if="successMsg"> Updated Successfully !! </h6> -->
-                <span class="loader" v-if="loader"></span>
+                <span class="loader-loader" v-if="loader"></span>
 
                 <!-- <div v-if="successAlert" class="alert alert-success alert-dismissible">
                     {{ successMessage }}
@@ -96,7 +96,11 @@
                         </div>
 
                         <div class="form-group py-3 mb-0">
-                            <button type="submit" name="submit" class="btn bg_purple text-light  form-control"> Submit
+                            <button type="button" class="btn  bg_purple text-white  w-100 " v-show="loaderSmall">
+                                <span class="loader-sm"> </span>
+                            </button>
+                            <button type="submit" name="submit" class="btn bg_purple text-light  form-control"
+                                v-show="submitBtn"> Submit
                             </button>
                         </div>
                         <div class="form-group mb-0">
@@ -135,6 +139,8 @@ export default {
             shopCountr: 0,
             // address: '',
             loader: '',
+            submitBtn: true,
+            loaderSmall: '',
             // successMsg: '
             states: ['Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Delhi', 'Goa', 'Gujrat',
                 'Hayana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh',
@@ -209,6 +215,8 @@ export default {
         },
         async btnUpload(e) {
             console.log(e)
+            this.submitBtn = '',
+                this.loaderSmall = true;
             let form = document.getElementById('form');
 
             this.file = this.$refs.file.files[0];
@@ -255,6 +263,8 @@ export default {
                     // this.successAlert = false;
                     // this.successMessage = '';
                     this.uploadedImage = '';
+                    this.submitBtn = true,
+                        this.loaderSmall = '';
                 }
             });
 

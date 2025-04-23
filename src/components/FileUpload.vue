@@ -1,24 +1,13 @@
 <template>
     <div class="container-fluid template"
         style="background-image: url('/images/yyy.jpg');  background-size: cover; background-blend-mode: overlay; ">
-        <h2 class="pb-4"> <span> Add Building  Or House </span> </h2>
+        <h2 class="pb-4"> <span> Add Building Or House </span> </h2>
 
         <div class="row px-lg-5 rounded add_property ">
             <div class="col-lg-4 px-0 rounded ">
             </div>
 
             <div class="col-lg-4 text-start ">
-                <!-- <h6 class="alert alert-success" v-if="successMsg"> Updated Successfully !! </h6> -->
-                <span class="loader" v-if="loader"></span>
-
-                <!-- <div v-if="successAlert" class="alert alert-success alert-dismissible">
-                    <a href="#" class="close" aria-label="close" @click="successAlert = false">×</a>
-                    {{ successMessage }}
-                </div>
-                <div v-if="errorAlert" class="alert alert-danger alert-dismissible">
-                    <button type="button" class="btn-close" @click="errorAlert = false" aria-label="Close"></button>
-                    {{ errorMessage }}
-                </div> -->
 
                 <div class="form p-4">
                     <form id="form" @submit.prevent="btnUpload($event)">
@@ -84,12 +73,15 @@
                         </div>
 
                         <div class="form-group pt-3 mb-0">
-                            <button type="submit" name="submit" class="btn bg_purple text-light  form-control"> Submit
+                            <button type="button" class="btn bg_purple text-light  form-control" v-if="loader">
+                                <span class="loader-sm"></span>
+                            </button>
+                            <button type="submit" name="submit" class="btn bg_purple text-light  form-control"
+                                v-show="submitBtn">
+                                Submit
                             </button>
                         </div>
-                        <div class="form-group ">
-                            <span class="loader" v-if="loader"></span>
-                        </div>
+
                         <!-- <div v-html="uploadedImage"></div> -->
                     </form>
                 </div>
@@ -157,6 +149,7 @@ export default {
             address: '',
             // response: [],
             loader: '',
+            submitBtn: true,
             // successMsg: '
             states: ['Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Delhi', 'Goa', 'Gujrat',
                 'Hayana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh',
@@ -200,6 +193,9 @@ export default {
         },
         async btnUpload(e) {
             console.log(e)
+            this.submitBtn = '';
+            this.loader = true;
+
             let form = document.getElementById('form');
 
             this.file = this.$refs.file.files[0];
@@ -209,8 +205,6 @@ export default {
 
             formData.append('file', this.file);
             console.log(formData);
-
-
             await axios.post('https://rentvent.shop/api/file_upload.php', formData, {
                 header: {
                     'Content-Type': 'multipart/form-data'
@@ -222,10 +216,9 @@ export default {
                         text: response.data.message,
                     });
                     this.uploadedImage = '';
-                    // this.errorAlert = true;
-                    // this.successAlert = false;
-                    // this.errorMessage = response.data.message;
-                    // this.successMessage = '';
+                    this.submitBtn = true;
+                    this.loader = false;
+
                 } else {
                     Swal.fire({
                         html: response.data.message + `<br> You are rediredted to My Properties`,
