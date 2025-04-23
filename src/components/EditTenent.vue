@@ -38,19 +38,19 @@
                             <div class="col-lg-6 form-group ">
                                 <span> Tenent ID </span>
                                 <input type="text" v-model="tenent_id" name="tenent_id" class="form-control"
-                                    placeholder="Enter Room/Flat Number" readonly >
+                                    placeholder="Enter Room/Flat Number" readonly>
                             </div>
 
                             <!-- 1 -->
                             <div class="col-lg-6 form-group ">
-                                <span> Room/Flat Number  </span>
+                                <span> Room/Flat Number </span>
                                 <input type="text" v-model="roomNumber" name="room_id" class="form-control"
                                     placeholder="Enter Room/Flat Number">
                             </div>
 
                             <!-- 2 -->
                             <div class="col-lg-6 form-group ">
-                                <span> Tenent Name  </span>
+                                <span> Tenent Name </span>
                                 <input type="text" v-model="TenentName" class="form-control" name="tenent_name"
                                     placeholder="Tenent Name*" required>
                             </div>
@@ -117,9 +117,8 @@
 
 
                             <div class="form-group ">
-                                <button type="button" class="btn bg_purple text-light round "
-                                    @click="nextShow()">
-                                   Next <i class="ps-2 fa fa-arrow-right text-light"> </i>
+                                <button type="button" class="btn bg_purple text-light round " @click="nextShow()">
+                                    Next <i class="ps-2 fa fa-arrow-right text-light"> </i>
                                 </button>
                             </div>
                         </div>
@@ -137,7 +136,7 @@
                                     placeholder="Enter Montly Rent Amount">
                             </div>
                             <div class="col-lg-6 form-group ">
-                                <span> Rent Mode  </span>
+                                <span> Rent Mode </span>
                                 <select class="form-select" name="rent_mode" aria-label="Default select example">
                                     <option selected> {{ response.rent_mode }} </option>
                                     <option value="fixed date"> 5th day of the Month </option>
@@ -229,14 +228,13 @@
                             </div> -->
                                 </div>
 
-                                <div  v-if="fixedMonthly">
+                                <div v-if="fixedMonthly">
                                     <div class="form-group">
                                         <input type="number" v-model="eFixedMonthlyAmount" name="e_fixed_monthly"
                                             class="form-control" placeholder="Enter Amount">
                                     </div>
                                 </div>
                                 <hr>
-                                
                             </div>
 
 
@@ -280,7 +278,11 @@
                             </div>
 
                             <div class="form-group py-3">
-                                <button type="submit" name="submit" class="btn bg_purple text-light  form-control">
+                                <button type="button" class="btn  bg_purple text-white  w-100 " v-show="loaderSmall">
+                                    <span class="loader-sm"> </span>
+                                </button>
+                                <button type="submit" name="submit" class="btn bg_purple text-light  form-control"
+                                    v-show="submitBtn">
                                     Submit
                                 </button>
                             </div>
@@ -328,7 +330,7 @@ export default {
             rentAmount: '',
             rentStartDate: '',
             bijliReading: '',
-            
+
 
             rowId: '',
             securityAmt: true,
@@ -344,6 +346,8 @@ export default {
             wFixedMonthlyAmount: '',
             fixedMonthly2: '',
 
+            loaderSmall: '',
+            submitBtn: true,
             goback: ""
         }
     },
@@ -444,6 +448,8 @@ export default {
 
         async postData(e) {
             console.log(e)
+            this.loaderSmall = true;
+            this.submitBtn = '';
             let form = document.getElementById('form2');
 
             this.file = this.$refs.file.files[0];
@@ -457,6 +463,8 @@ export default {
                     'Content-Type': 'multipart/form-data'
                 }
             }).then(response => {
+                this.loaderSmall = '';
+                this.submitBtn = true;
                 if (response.data.image == '') {
                     Swal.fire({
                         text: response.data.message,
@@ -464,6 +472,7 @@ export default {
                     });
                     this.errorMessage = response.data.message;
                     this.uploadedImage = '';
+
                 } else {
                     Swal.fire({
                         icon: "success",
