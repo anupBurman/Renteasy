@@ -53,9 +53,6 @@
                     <div class="form-group text-secondary text-end mt-1">
                         <span class="text-dark" @click="forgotfunc()"> Forget Password ? </span>
                     </div>
-                    <div class="form-group text-secondary link_txt  pt-2 ">go to
-                        <span class="text-dark" @click="goToLogin()"> Login </span>
-                    </div>
                 </form>
             </div>
         </div>
