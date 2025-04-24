@@ -58,9 +58,8 @@
                     </div>
                 </form>
             </div>
-
-
         </div>
+
 
         <div class="row p-4 " v-if="forgotPass">
             <h5> Enter Registered Email </h5>
@@ -87,6 +86,9 @@
                         <!-- default this will show -->
                         <button type="submit" class="btn  bg_purple text-white  w-100" v-show="forgotBtn"> Button
                         </button>
+                    </div>
+                    <div class="form-group text-secondary link_txt  pt-2 ">go to
+                        <span class="text-dark" @click="goToLogin()"> Login </span>
                     </div>
                 </form>
             </div>
