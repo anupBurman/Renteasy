@@ -53,6 +53,9 @@
                     <div class="form-group text-secondary text-end mt-1">
                         <span class="text-dark" @click="forgotfunc()"> Forget Password ? </span>
                     </div>
+                    <div class="form-group text-secondary link_txt  pt-2 ">go to
+                        <span class="text-dark" @click="goToLogin()"> Login </span>
+                    </div>
                 </form>
             </div>
 
@@ -153,6 +156,10 @@ export default {
             this.loginBlock = false
             this.forgotPass = true;
         },
+        goToLogin() {
+            this.loginBlock = true;
+            this.forgotPass = false;
+        },
         async forgotPassword(e) {
             e.preventDefault();
             this.forgotBtn = '';
@@ -202,6 +209,13 @@ export default {
     width: 40px;
     height: 40px;
     border-radius: 7px;
+}
+.link_txt{
+    cursor: pointer;
+    text-align: end;
+}
+.link_txt .text-dark:hover{
+    color:#d15834 !important ;
 }
 
 .form-group {

@@ -1,25 +1,27 @@
 <template>
     <div class="container-fluid px-0  footer" >
-        <ul class="d-flex justify-content-between" v-if="footerLinks">
+        <ul class="d-flex justify-content-between align-items-center" v-if="footerLinks">
             <li>
-                <router-link to="/">
+                <i class="fa fa-arrow-circle-left" aria-hidden="true" @click="goBack()" ></i>
+                    <h6> Back </h6>
+                <!-- <router-link to="/">
+                    <i class="bi bi-house-heart-fill"></i>
+                    <h6> Home </h6>
+                </router-link> -->
+            </li>
+            <li>
+                 <router-link to="/">
                     <i class="bi bi-house-heart-fill"></i>
                     <h6> Home </h6>
                 </router-link>
             </li>
-            <li>
-                <router-link to="/add_property">
-                    <i class="bi bi-telephone-fill"></i>
-                    <h6> Contact</h6>
-                </router-link>
-            </li>
-            <li>
+            <!-- <li>
                 <router-link to="/Tab-View">
                     <i class="bi bi-hourglass-bottom"></i>
                     <h6> History </h6>
                 </router-link>
 
-            </li>
+            </li> -->
             <li>
                 <router-link to="/add_property">
                     <i class="bi bi-plus-square-dotted"></i>
@@ -38,6 +40,12 @@ export default {
         return{
             footerLinks: true,
         }
+    },
+    methods:{
+        goBack() {
+            console.log( )
+           this.$route.path  == '/' ? '' : this.$router.back();
+        },
     },
     // GET USER INFO FROM LOCAL STORAGE AND THEN APPLY CONDITIONS
     mounted() {

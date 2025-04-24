@@ -398,7 +398,6 @@ button.btn:hover {
   .d_flex {
     display: block;
   }
-
   .swal2-popup {
     font-size: 0.7em;
   }
