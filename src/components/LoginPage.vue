@@ -174,7 +174,6 @@ export default {
             if (qwery2.status == 200 && qwery2.data.status == true) {
                 // localStorage.setItem("userinfo", JSON.stringify(qwery.data.sql_massege[0]))
                 // this.$router.push({ name: 'HomePage' })
-                // window.location.reload();
                 this.forgotBtn = true;
                 this.loader2 = '';
                 Swal.fire({
@@ -184,6 +183,7 @@ export default {
                     this.$router.push({ name: 'logIn' })
                 })
             } else {
+                console.log(qwery2.data.status)
                 Swal.fire({
                     icon: "error",
                     text: "This Email is Not Registered With Our Database, Please try with Onother Email Id !",
