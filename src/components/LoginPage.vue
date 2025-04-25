@@ -183,7 +183,7 @@ export default {
                     this.$router.push({ name: 'logIn' })
                 })
             } else {
-                console.log(qwery2.data.status)
+                console.log(qwery2.data)
                 Swal.fire({
                     icon: "error",
                     text: "This Email is Not Registered With Our Database, Please try with Onother Email Id !",
