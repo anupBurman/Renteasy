@@ -2,8 +2,11 @@
     <div class="container-fluid px-0  footer" >
         <ul class="d-flex justify-content-between align-items-center" v-if="footerLinks">
             <li>
-                <i class="fa fa-arrow-circle-left" aria-hidden="true" @click="goBack()" ></i>
-                    <h6> Back </h6>
+               
+                    <a href="">
+                        <i class="fa fa-arrow-circle-left" aria-hidden="true" @click="goBack()" ></i>
+                        <h6> Back </h6>
+                    </a>
                 <!-- <router-link to="/">
                     <i class="bi bi-house-heart-fill"></i>
                     <h6> Home </h6>
