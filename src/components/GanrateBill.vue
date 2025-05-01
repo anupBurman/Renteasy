@@ -2,7 +2,7 @@
     <div class="container-fuidte template"
         style="background-image: url('/images/yyy.jpg');  background-size: cover; background-blend-mode: overlay; ">
         <!-- <h2> My Properties Detail {{ rowId }} </h2> -->
-        {{ output }} <br> {{ response2.month }}
+        <!-- {{ output }} <br> {{ response2.month }} -->
 
         <!-- {{ response2 }} -->
         <div class="row py-4 d-flex justify-content-center">

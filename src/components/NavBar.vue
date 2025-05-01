@@ -179,7 +179,7 @@ a.navbar-brand {
         background: rgb(96, 67, 157);
         background: linear-gradient(97deg, rgba(96, 67, 157, 1) 50%, rgba(126, 89, 203, 1) 100%);
         top: 55px;
-        width: 250px;
+        width:100%;
         /* transform: translateX(-200px); */
         left: 0;
         text-align: left;
@@ -188,7 +188,7 @@ a.navbar-brand {
     }
 
     .nav-item .nav-link {
-        padding: 16px 0px;
+        padding: 12px 0px;
         border-bottom: 1px solid #e7e7e715;
     }
 
