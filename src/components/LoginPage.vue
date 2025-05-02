@@ -36,8 +36,7 @@
                             required placeholder="Enter Password">
                     </div>
                     <div class="form-group text-secondary">
-                        <input class="form-check-input me-1" type="checkbox" id="user_licence" value="user_licence"
-                            v-model="userLicence" required />
+                        <input class="form-check-input me-1" type="checkbox" id="user_licence" v-model="userLicence" />
                         End User
                         <router-link to="/terms_conditions">
                             <span class="text-dark"> License Agreement * </span>
@@ -123,33 +122,41 @@ export default {
     methods: {
         async logIn(e) {
             e.preventDefault();
-            this.loader = true;
-            this.loginBtn = '';
-            // let email = this.email;
-            // let pw = this.password;
-            let qwery = await axios({
-                method: 'POST',
-                url: 'https://rentvent.shop/api/user_login.php',
-                data: {
-                    email: this.email,
-                    password: this.password,
-                    user_license: this.userLicence,
-                }
-            })
-            // console.log(qwery.data.sql_massege[0])
-            if (qwery.status == 200 && qwery.data.status == true) {
-                localStorage.setItem("userinfo", JSON.stringify(qwery.data.sql_massege[0]))
-                // this.$router.push({ name: 'HomePage' })
-                window.location.reload();
-
-            } else {
+            if (this.userLicence == false) {
                 Swal.fire({
                     icon: "error",
-                    text: "Email or Password Wrong !",
+                    text: " You must be agree user license agreement ",
                 });
-                this.loader = '';
-                this.loginBtn = true;
+            } else {
+                this.loader = true;
+                this.loginBtn = '';
+                // let email = this.email;
+                // let pw = this.password;
+                let qwery = await axios({
+                    method: 'POST',
+                    url: 'https://rentvent.shop/api/user_login.php',
+                    data: {
+                        email: this.email,
+                        password: this.password,
+                        user_license: this.userLicence,
+                    }
+                })
+                // console.log(qwery.data.sql_massege[0])
+                if (qwery.status == 200 && qwery.data.status == true) {
+                    localStorage.setItem("userinfo", JSON.stringify(qwery.data.sql_massege[0]))
+                    // this.$router.push({ name: 'HomePage' })
+                    window.location.reload();
+
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        text: "Email or Password Wrong !",
+                    });
+                    this.loader = '';
+                    this.loginBtn = true;
+                }
             }
+
         },
         forgotfunc() {
             this.loginBlock = false
@@ -209,12 +216,14 @@ export default {
     height: 40px;
     border-radius: 7px;
 }
-.link_txt{
+
+.link_txt {
     cursor: pointer;
     text-align: end;
 }
-.link_txt .text-dark:hover{
-    color:#d15834 !important ;
+
+.link_txt .text-dark:hover {
+    color: #d15834 !important;
 }
 
 .form-group {
