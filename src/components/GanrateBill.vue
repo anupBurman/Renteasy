@@ -28,8 +28,22 @@
                             <h4 class="mb-0 text-center py-3"> Rent Recieve </h4>
                             <div class="d_flex_between ">
                                 <h5 class="mb-0">{{ output.tenent_name }} /ID:{{ output.id }}</h5>
-                                <button type="button" class="btn btn-sm btn-default outline_purple round  mx-lg-4 px-3">
-                                    {{ dayy }}-{{ monthh }}-{{ Yearr }} To {{ dayy }}-{{ parseInt(monthh) + 1 }}-{{
+
+                                <!--   WHEN USER GANERATE RECIEPT FIRST TIME THEN (this will show) -->
+                                <button type="button"
+                                    class="btn btn-sm text-light btn-default bg_purple round  mx-lg-4 px-3"
+                                    v-if="response2.length == 0">
+                                    {{ dayy }}-{{ monthh }}-{{ Yearr }} <span style="color:aqua">To</span> {{ dayy }}-{{
+                                        parseInt(monthh) + 1 }}-{{
+                                        Yearr }}
+                                </button>
+
+                                <!--   WHEN USER ALREADY GANERATED RECIEPT ATLEAST ONCE THEN (this will show) -->
+                                <button type="button"
+                                    class="btn btn-sm text-light btn-default bg_purple round  mx-lg-4 px-3" v-else>
+                                    {{ dayy }}-{{ parseInt(response2.month) + 1 }}-{{ Yearr }} <span
+                                        style="color:aqua">To</span> {{ dayy }}-{{
+                                            parseInt(response2.month) + 2 }}-{{
                                         Yearr }}
                                 </button>
                             </div>
@@ -50,7 +64,7 @@
                             </div>
 
 
-                            <div class="form-group ">
+                            <div class="form-group" v-if="response2.length == 0">
                                 <label>
                                     Which Month's Rent You recieving
                                 </label>
@@ -69,8 +83,12 @@
                                     <option value="10"> November </option>
                                     <option value="11"> October </option>
                                     <option value="12"> December </option>
-
                                 </select>
+                            </div>
+                            <div class="form-group " v-else>
+                                <!-- Which Month's Rent You recieving -->
+                                <input class="form-control" type="hidden"
+                                    v-model="rentCollectMonth" required>
                             </div>
 
                             <!-- <div class="form-group ">
@@ -155,7 +173,7 @@
                                 <div class="form-group d_flex_between ">
                                     <h6 class="mb-0 "> units: <span class="text_bold"> {{ reslt_reading }}</span> </h6>
                                     <h6 class="mb-0 "> Charges per unit: <span class="text_bold"> {{ output.e_per_unit
-                                    }}</span>
+                                            }}</span>
                                     </h6>
                                     <h6 class="mb-0"> Last Reading:
                                         <span class="text_bold" v-if="readingField">{{ output.bijli_reading }}</span>
