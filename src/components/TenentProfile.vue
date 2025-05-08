@@ -1,7 +1,6 @@
 <template>
     <div class="container-fluid ">
        <!-- {{ response }} -->
-        <br> <br>
         <!-- {{ response2 }}  -->
         <div class="row px-lg-5 profile_comp ">
             <div class="py-3 ">
