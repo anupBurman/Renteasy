@@ -3,7 +3,7 @@
         <ul class="d-flex justify-content-between align-items-center" v-if="footerLinks">
             <li>
                
-                    <a href="">
+                    <a>
                         <i class="fa fa-arrow-circle-left" aria-hidden="true" @click="goBack()" ></i>
                         <h6> Back </h6>
                     </a>

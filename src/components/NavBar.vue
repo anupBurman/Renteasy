@@ -67,7 +67,7 @@
                         <a class="dropdown-item"> <router-link to="/register"> Register</router-link> </a>
                     </li>
                     <li class="nav-item px-2">
-                        <a class="dropdown-item log_out" v-if="username"> Welcome {{ username }} ! </a>
+                        <a class="dropdown-item log_out" v-if="username"> {{ username }} ! </a>
                     </li>
                     <li class="nav-item px-2">
                         <a class="dropdown-item log_out" @click="logOut(), refresh()" v-if="logout"> Logout </a>
