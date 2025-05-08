@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid template">
-        <h2> Edit Details In {{ response.prop_name }} / {{ rowId }} </h2>
+        <h2> Edit {{ response.prop_name }} / {{ rowId }} </h2>
         <!-- {{ response }} -->
         <div class="row px-lg-5 px-2 pb-5">
             <div class="form-group ">
