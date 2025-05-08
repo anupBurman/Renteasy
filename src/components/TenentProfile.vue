@@ -2,7 +2,7 @@
     <div class="container-fluid ">
        <!-- {{ response }} -->
         <!-- {{ response2 }}  -->
-        <div class="row px-lg-5 profile_comp ">
+        <div class="row px-lg-5 mb-5 profile_comp ">
             <div class="py-3 ">
                
                 <router-link :to="`/ganrate_bill/` + response.prop_id + `/` + response.id + `/` + monthh">
