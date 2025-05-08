@@ -186,7 +186,7 @@
                     <div class="col-6 " v-if="response.e_fixed_monthly > 10">
                         <div class="d_flex_between">
                             <span> Monthly Rent </span>
-                            <span class="text_bold"> {{ response.recieved_amount }} </span>
+                            <span class="text_bold"> {{ response.rent_amount }} </span>
                         </div>
                         <div class="d_flex_between ">
                             <span> Electricity fixed Charge </span>
