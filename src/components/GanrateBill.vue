@@ -87,7 +87,7 @@
                             </div>
                             <div class="form-group" v-else>
                                 <!-- Which Month's Rent You recieving -->
-                                <input class="form-control" readonly type="text"
+                                <input class="form-control" readonly type="hidden"
                                     v-model="rentCollectMonth" required>
                             </div>
 
@@ -355,6 +355,7 @@ export default {
                 this.mm = month;
                 this.dd = day;
                 this.yy = year;
+                this.rentCollectMonth = parseInt(this.response2.month) + 1;
 
                 // previous month current_reading is this month's last Reading
                 this.lastReading2 = this.response2.current_reading;
