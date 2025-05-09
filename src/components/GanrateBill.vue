@@ -85,9 +85,9 @@
                                     <option value="12"> December </option>
                                 </select>
                             </div>
-                            <div class="form-group " v-else>
+                            <div class="form-group" v-else>
                                 <!-- Which Month's Rent You recieving -->
-                                <input class="form-control" type="hidden"
+                                <input class="form-control" readonly type="text"
                                     v-model="rentCollectMonth" required>
                             </div>
 
