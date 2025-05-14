@@ -301,6 +301,8 @@ export default {
             });
         },
 
+        //*** SECOND FUNCTION ***/
+
         async getAmount() {
             const Response3 = await axios({
                 method: 'post',
@@ -317,6 +319,7 @@ export default {
             }
         },
 
+        //*** THIRED FUNCTION ***/
         async receivedAmount() {
             const d = new Date();
             let m = d.getMonth();
@@ -337,6 +340,7 @@ export default {
                 console.log("something went wrong")
             }
         },
+        
         // DELETE ALL TENENT DATA
         async deleteTenent(tid) {
 
