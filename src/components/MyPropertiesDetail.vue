@@ -102,7 +102,7 @@
 
                     <router-link :to="`/edit_tenent/` + data.id">
                         <button class="btn btn-dark btn-sm round">
-                           Edit 
+                            Edit
                         </button>
                     </router-link>
 
@@ -113,9 +113,9 @@
 
             <!-- ===== for Shop ====== -->
             <div class="col-lg-6">
-                
+
                 <div class="p-3 bg-dark text-light text-start"> Shops - {{ shop_countr }}
-                    <router-link :to="tabURL2 + rowId" >
+                    <router-link :to="tabURL2 + rowId">
                         <button class="btn btn-sm  bg_purple text-white mx-lg-4  round">
                             <i class="bi bi-plus-square-dotted"></i> Add Data in Shops
                         </button>
@@ -138,7 +138,7 @@
 
                     <router-link :to="`/edit_tenent/` + data.id">
                         <button class="btn btn-dark btn-sm round">
-                           Edit 
+                            Edit
                         </button>
                     </router-link>
 
@@ -212,7 +212,7 @@ export default {
             }
         },
 
-       
+
         async postData(e) {
             this.rowId = this.$router.currentRoute.value.params.id;
             console.log(e);
@@ -264,6 +264,41 @@ export default {
             } else {
                 console.log("something went wrong data couldnt fetch")
             }
+
+            // when current date 30 days grreater then rent start date. this script will run
+            let diffDays = '';
+            let dd = new Date();
+            let day = dd.getDate();
+            let rentDate = '';
+            const Uemail = Response.data[0].user_email;
+            // console.log(Response2.data)
+            Response2.data.forEach(async function (x) {
+                let rd = new Date(x.rent_start_date)
+                rentDate = rd.getDate();
+                diffDays = day - rentDate;
+                console.log(diffDays);
+
+                if (diffDays > 30) {
+                    const SendData = await axios({
+                        method: 'post',
+                        url: 'https://rentvent.shop/api/rent_reminder_mail.php',
+                        data: {
+                            userEmail: Uemail,
+                            prop_name: x.prop_name,
+                            tenent_name: x.tenent_name,
+                            mobileNum: x.mob_number
+                        }
+                    });
+                    if (SendData.status == 200) {
+                        console.log('done')
+                    } else {
+                        console.log("something went wrong")
+                    }
+                }
+                else {
+                    console.log('month not completed')
+                }
+            });
         },
 
         async getAmount() {
@@ -304,7 +339,7 @@ export default {
         },
         // DELETE ALL TENENT DATA
         async deleteTenent(tid) {
-            
+
             console.log(tid)
             if (confirm('Do you really want to delete this data ?')) {
                 const Response3 = await axios({
@@ -344,7 +379,7 @@ export default {
         // if (this.output.length == this.shop_countr) {
         //     this.AddShop = false;
         // }
-       
+
     },
 }
 
