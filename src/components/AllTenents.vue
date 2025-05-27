@@ -2,8 +2,7 @@
     <div class="container-fluid template" style="background-image: url('/images/smoke_bg.jpg');background-size: cover;">
         <h2> Next Due Date Status </h2>
         <br>
-        {{ response }} {{ cMonth }}
-
+        <!-- {{ response }} {{ cMonth }} -->
         <div>
             <span class="loader" v-if="loader"></span>
         </div>
