@@ -292,6 +292,11 @@ export default {
 
         async postBill(e) {
             e.preventDefault();
+            let Obj = new Date(this.output.rent_start_date)
+            const startDate = Obj.getDate();
+            const startYear = Obj.getFullYear();
+            const startMonth = Obj.getMonth()+1;
+            console.log(startDate, startYear, startMonth );
             const billData = await axios({
                 method: 'post',
                 url: 'https://rentvent.shop/api/recieve_payment.php',
@@ -299,8 +304,11 @@ export default {
                     property: this.rowId,
                     room_num: this.output.room_id,
                     tenent_id: this.tenentId,
+                    tenent_name: this.output.tenent_name,
                     recieved_amount: this.amount,
                     naration: this.naration,
+                    rentStartDate: startDate,
+                    startYear: startYear,
                     start_month: this.rentStartDate,
 
                     lastPaidMonth: this.month,

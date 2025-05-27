@@ -266,16 +266,18 @@ export default {
             }
 
             // when current date 30 days grreater then rent start date. this script will run
-            let diffDays = '';
+            // let diffDays = '';
             let dd = new Date();
             let day = dd.getDate();
             let rentDate = '';
+            const interval = Math.floor(2 * 60 * 1000);
             const Uemail = Response.data[0].user_email;
-            // console.log(Response2.data)
-            Response2.data.forEach(async function (x) {
+            console.log(interval);
+
+            Response2.data.forEach(async function myfunc (x) {
                 let rd = new Date(x.rent_start_date)
                 rentDate = rd.getDate();
-                diffDays = day - rentDate;
+                const diffDays = day - rentDate;
                 console.log(diffDays);
 
                 if (diffDays > 30) {
@@ -340,7 +342,7 @@ export default {
                 console.log("something went wrong")
             }
         },
-        
+
         // DELETE ALL TENENT DATA
         async deleteTenent(tid) {
 

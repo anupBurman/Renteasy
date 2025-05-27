@@ -143,9 +143,11 @@ export default {
                 })
                 // console.log(qwery.data.sql_massege[0])
                 if (qwery.status == 200 && qwery.data.status == true) {
-                    localStorage.setItem("userinfo", JSON.stringify(qwery.data.sql_massege[0]))
+                    localStorage.setItem("userinfo", JSON.stringify(qwery.data.sql_massege[0]));
+                    localStorage.setItem("userId", JSON.stringify(qwery.data.sql_massege2))
                     // this.$router.push({ name: 'HomePage' })
                     window.location.reload();
+                    this.loader = '';
 
                 } else {
                     Swal.fire({

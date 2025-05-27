@@ -41,6 +41,9 @@
                     <li class="nav-item" @click="hideMenu()">
                         <a class="nav-link"> <router-link to="/myProperty">My Properties </router-link> </a>
                     </li>
+                    <li class="nav-item" @click="hideMenu()">
+                        <a class="nav-link"> <router-link to="/all_tenents"> All Tenents </router-link> </a>
+                    </li>
 
                     <!-- <div class="dropdown">
                         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"

@@ -26,6 +26,7 @@ import TermsConditions from "@/components/TermsConditions.vue";
 import ErrorPage from "@/components/ErrorPage.vue";
 import AddShop from "@/components/AddShop.vue";
 import DeleteProperty from "@/components/delete/DeleteProperty.vue";
+import AllTenents from "@/components/AllTenents.vue";
 
 
 
@@ -160,21 +161,17 @@ const routes = [
     name: 'AddShop',
     component: AddShop
    },
+    {
+    path: '/all_tenents',
+    name: 'AllTenents',
+    component: AllTenents
+   },
    {
     path: '/error_page',
     name: 'ErrorPage',
     component: ErrorPage
    }
 
- 
-
-
-
-
- 
-  
- 
-  
   
 ];
 
