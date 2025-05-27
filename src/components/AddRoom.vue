@@ -10,11 +10,6 @@
             </form>
             <div class="col-lg-3 col-md-3"></div>
             <div class="col-lg-6 col-md-6 text-start ">
-                <!-- <div v-if="successAlert" class="alert alert-success alert-dismissible">
-                    {{ successMessage }}
-                    <button type="button" class="btn-close" @click="successAlert = false" aria-label="Close"></button>
-                </div>
-                 -->
                 <div class="form p-4 ">
                     <div class="d_flex_between pb-2">
                         <h4 class="mb-0"> Add Tenent Details </h4>
@@ -141,7 +136,7 @@
                                     <select class="form-select" name="rent_mode" aria-label="Default select example"
                                         v-model="rentMode" required>
                                         <!-- <option selected>Select Rent Mode *</option> -->
-                                        <option value="fixed date"> 5th day of the Month </option>
+                                        <option value="fixed date"> 1st day of the Month </option>
                                         <option value="date to date"> Date to Date </option>
                                     </select>
                                 </div>
@@ -167,15 +162,8 @@
                             <div class="d_flex">
                                 <div class="w-50 pe-lg-2">
                                     <p class="mb-0"> Do You Take Any Security Deposit ? </p>
-                                    <!-- <div class="form-group d-flex align-items-end">
-                                        <button type="button" class="btn btn-sm bg_purple text-white  round"
-                                            @click="securityAmt = false ">No</button>
-                                        <button type="button" class="btn btn-sm bg_purple text-white mx-2 round"
-                                            @click="securityAmt = !false">Yes</button>
-
-                                        <input type="number" name="security_amount" class="form-control "
-                                            placeholder="Enter Sucurity Amount" v-if="securityAmt">
-                                    </div> -->
+                                   
+                                    
                                     <div class="form-group d-flex align-items-center">
                                         <input type="radio" id="s_amount1" name="s_amount" class="form-check-input "
                                             @click="securityAmt = false" /> <label for="s_amount1"
