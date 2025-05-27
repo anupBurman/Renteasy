@@ -229,6 +229,7 @@ export default {
             error_msg: '',
             output: [],
             rowId: '',
+            userId: '',
             tenentId: '',
             date: '',
             lastReading: '',
@@ -302,6 +303,7 @@ export default {
                 url: 'https://rentvent.shop/api/recieve_payment.php',
                 data: {
                     property: this.rowId,
+                    userId: this.userId,
                     room_num: this.output.room_id,
                     tenent_id: this.tenentId,
                     tenent_name: this.output.tenent_name,
@@ -309,7 +311,7 @@ export default {
                     naration: this.naration,
                     rentStartDate: startDate,
                     startYear: startYear,
-                    start_month: this.rentStartDate,
+                    // start_month: this.rentStartDate,
 
                     lastPaidMonth: this.month,
                     rentCollectMonth: this.rentCollectMonth,
@@ -426,6 +428,8 @@ export default {
         this.getRentReceived();
         let form2 = document.getElementById('form_2');
         form2.style.display = 'none';
+        let localUser = localStorage.getItem("userId");
+        this.userId = JSON.parse(localUser);
     },
     beforeUpdate() {
         this.output.e_per_unit > 0 ? (this.submitt = false, this.nextBtn = true) : (this.submitt = true)
