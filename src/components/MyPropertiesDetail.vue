@@ -280,7 +280,7 @@ export default {
                 const diffDays = day - rentDate;
                 console.log(diffDays);
 
-                if (diffDays > 30) {
+                if (diffDays > 21) {
                     const SendData = await axios({
                         method: 'post',
                         url: 'https://rentvent.shop/api/rent_reminder_mail.php',
