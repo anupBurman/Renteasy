@@ -79,7 +79,7 @@ export default {
             response: [],
             loader: '',
             successMsg: '',
-            basePath: 'https://rentvent.shop/api/',
+            basePath: 'https://rentvent.store/api/',
             imagePath: '',
             id: '',
             usermail: '',
@@ -115,7 +115,7 @@ export default {
             try {
                 const Response = await axios({
                     method: 'post',
-                    url: 'https://rentvent.shop/api/my_properties.php',
+                    url: 'https://rentvent.store/api/my_properties.php',
                     data: {
                         user_email: this.usermail,
                         building_name: this.buildingName,
@@ -148,7 +148,7 @@ export default {
             if (confirm('Do you really want to delete the property ? ')) {
                 const Response3 = await axios({
                     method: 'post',
-                    url: 'https://rentvent.shop/api/delete_property.php',
+                    url: 'https://rentvent.store/api/delete_property.php',
                     data: {
                         propId: e,
                     }
