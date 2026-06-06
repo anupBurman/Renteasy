@@ -199,13 +199,13 @@ export default {
             let form = document.getElementById('form');
 
             this.file = this.$refs.file.files[0];
-            let basepath = "https://rentvent.shop/api/";
+            let basepath = "https://rentvent.store/api/";
             let formData = new FormData(form);
             // var formData = new FormData();
 
             formData.append('file', this.file);
             console.log(formData);
-            await axios.post('https://rentvent.shop/api/file_upload.php', formData, {
+            await axios.post('https://rentvent.store/api/file_upload.php', formData, {
                 header: {
                     'Content-Type': 'multipart/form-data'
                 }
