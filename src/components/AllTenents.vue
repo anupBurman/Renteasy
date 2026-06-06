@@ -114,7 +114,7 @@ export default {
             try {
                 const Response = await axios({
                     method: 'post',
-                    url: 'https://rentvent.shop/api/all_tenents.php',
+                    url: 'https://rentvent.store/api/all_tenents.php',
                     data: {
                         userId: this.userId,
                         month: this.month
