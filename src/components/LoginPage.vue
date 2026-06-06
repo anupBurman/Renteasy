@@ -134,7 +134,7 @@ export default {
                 // let pw = this.password;
                 let qwery = await axios({
                     method: 'POST',
-                    url: 'https://rentvent.shop/api/user_login.php',
+                    url: 'https://rentvent.store/api/user_login.php',
                     data: {
                         email: this.email,
                         password: this.password,
@@ -174,7 +174,7 @@ export default {
             this.loader2 = true;
             let qwery2 = await axios({
                 method: 'POST',
-                url: 'https://rentvent.shop/api/forgot_password.php',
+                url: 'https://rentvent.store/api/forgot_password.php',
                 data: {
                     email: this.email,
                 }
