@@ -186,7 +186,7 @@ export default {
 
             const Response = await axios({
                 method: 'post',
-                url: 'https://rentvent.shop/api/get_single_property.php',
+                url: 'https://rentvent.store/api/get_single_property.php',
                 data: {
                     prop_id: this.propId,
                 }
@@ -220,7 +220,7 @@ export default {
             let form = document.getElementById('form');
 
             this.file = this.$refs.file.files[0];
-            let basepath = "https://rentvent.shop/api/";
+            let basepath = "https://rentvent.store/api/";
             let formData = new FormData(form);
             // var formData = new FormData();
 
@@ -228,7 +228,7 @@ export default {
             console.log(formData);
 
 
-            await axios.post('https://rentvent.shop/api/edit_property.php', formData, {
+            await axios.post('https://rentvent.store/api/edit_property.php', formData, {
                 header: {
                     'Content-Type': 'multipart/form-data'
                 }
