@@ -118,7 +118,7 @@ export default {
             if (this.password === this.conformPass) {
                 const Axios = await axios({
                     method: 'post',
-                    url: 'https://rentvent.shop/api/users.php',
+                    url: 'https://rentvent.store/api/users.php',
                     data: {
                         name: this.name,
                         email: this.email,
