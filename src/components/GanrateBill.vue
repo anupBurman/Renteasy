@@ -265,7 +265,7 @@ export default {
             // e.preventDefault();
             const Output = await axios({
                 method: 'post',
-                url: 'https://rentvent.shop/api/tenent_all_details.php',
+                url: 'https://rentvent.store/api/tenent_all_details.php',
                 data: {
                     tenentId: this.tenentId,
                 }
@@ -300,7 +300,7 @@ export default {
             console.log(startDate, startYear, startMonth );
             const billData = await axios({
                 method: 'post',
-                url: 'https://rentvent.shop/api/recieve_payment.php',
+                url: 'https://rentvent.store/api/recieve_payment.php',
                 data: {
                     property: this.rowId,
                     userId: this.userId,
@@ -350,7 +350,7 @@ export default {
             console.log(tenentId)
             const Response2 = await axios({
                 method: 'post',
-                url: 'https://rentvent.shop/api/tenent_bill_detail.php',
+                url: 'https://rentvent.store/api/tenent_bill_detail.php',
                 data: {
                     id: this.tenentId,
                 }
